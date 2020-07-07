@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TheMapToScrum.Back.DAL\TheMapToScrum.Back.DAL.csproj" />
+    <ProjectReference Include="..\TheMapToScrum.Back.DTO\TheMapToScrum.Back.DTO.csproj" />
+    <ProjectReference Include="..\TheMapToScrum.Back.Repositories\TheMapToScrum.Back.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>
