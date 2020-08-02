@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using TheMapToScrum.Back.DAL;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.Repositories.Contract;
@@ -40,6 +42,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         {
             //proche bdd 
             return _context.Project
+                .Include(d => d.Department)
                 .OrderByDescending(x => x.Label)
                 .ToList();
 

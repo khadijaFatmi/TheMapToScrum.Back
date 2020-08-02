@@ -6,6 +6,6 @@ namespace TheMapToScrum.Back.DAL.Entities
     {
         public string Label { get; set; }
 
-        public List<Developer> developers { get; set; }
+        public List<Developer> Developers { get; set; }
     }
 }

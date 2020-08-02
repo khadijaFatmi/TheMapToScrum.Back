@@ -10,8 +10,11 @@ namespace TheMapToScrum.Back.BLL.Mapping
         internal static DepartmentDTO ToDto(Department objet)
         {
             DepartmentDTO retour = new DepartmentDTO();
-            retour.Label = objet.Label;
-            return retour;
+            if (objet != null)
+            {
+                retour.Label = objet.Label;
+            }
+                return retour;
         }
 
 

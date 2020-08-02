@@ -19,6 +19,10 @@ namespace TheMapToScrum.Back.DAL
 
         public virtual DbSet<BusinessManager> BusinessManager { get; set; }
 
+        public virtual DbSet<TechnicalManager> TechnicalManagers { get; set; }
+
+        public virtual DbSet<Team> Team { get; set; }
+
         public virtual DbSet<Developer> Developer { get; set; }
 
         public virtual DbSet<Department> Department { get; set; }
