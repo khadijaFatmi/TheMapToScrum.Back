@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TheMapToScrum.Back.DTO;
 using TheMapToScrum.Back.BLL.Interfaces;
+using System;
 
 namespace TheMapToScrum.Back.Controllers
 {
@@ -32,7 +33,7 @@ namespace TheMapToScrum.Back.Controllers
         public List<UserStoryContentDTO> Get()
         {
             List<UserStoryContentDTO> retour = new List<UserStoryContentDTO>();
-            retour = _logic.list();
+            retour = _logic.listActive();
             return retour;
         }
 
@@ -71,7 +72,7 @@ namespace TheMapToScrum.Back.Controllers
                     UserStoryContentDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
-                catch
+                catch(Exception ex)
                 {
                     return null;
                 }
@@ -82,6 +83,28 @@ namespace TheMapToScrum.Back.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+
+        public ActionResult<bool> Delete(int? id)
+        {
+            if (id.HasValue)
+            {
+                try
+                {
+                    bool resultat = _logic.Delete((int)id);
+                    return resultat;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return BadRequest("id invalide");
+            }
+        }
 
     }
 }

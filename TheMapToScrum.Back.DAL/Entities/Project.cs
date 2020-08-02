@@ -2,13 +2,13 @@
 
 namespace TheMapToScrum.Back.DAL.Entities
 {
-    public class Projet : EntityBase
+    public class Project : EntityBase
     {
         public string Name { get; set; }
 
-        public int AuthorId { get; set; }
+        public int BusinessManagerId { get; set; }
 
-        public Author Auteur { get; set; }
+        public BusinessManager Auteur { get; set; }
         public List<UserStoryContent> UserStories { get; set; }
     }
 }

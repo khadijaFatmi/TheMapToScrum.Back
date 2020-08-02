@@ -1,6 +1,6 @@
 ﻿namespace TheMapToScrum.Back.DTO
 {
-    public class AuthorDTO : BaseEntityDTO
+    public class BusinessManagerDTO : BaseEntityDTO
     {
         public string Name { get; set; }
 

@@ -35,7 +35,9 @@ namespace TheMapToScrum.Back.BLL
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+           
+            bool resultat = _repo.Delete(id);
+            return resultat;
         }
 
         public UserStoryContentDTO GetById(int id)
@@ -56,7 +58,10 @@ namespace TheMapToScrum.Back.BLL
         }
         public List<UserStoryContentDTO> listActive()
         {
-            throw new NotImplementedException();
+            List<UserStoryContentDTO> retour = new List<UserStoryContentDTO>();
+            List<UserStoryContent> liste = _repo.GetAllActive();
+            retour = MapUserStoryContentDTO.ToDto(liste);
+            return retour;
         }
 
        

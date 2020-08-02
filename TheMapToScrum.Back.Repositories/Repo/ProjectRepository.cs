@@ -7,19 +7,19 @@ using TheMapToScrum.Back.Repositories.Contract;
 
 namespace TheMapToScrum.Back.Repositories.Repo
 {
-    public class ProjetRepository : IProjetRepository
+    public class ProjectRepository : IProjectRepository
     {
         private readonly ApplicationContext _context;
 
 
-        public ProjetRepository(ApplicationContext context)
+        public ProjectRepository(ApplicationContext context)
         {
             _context = context;
         }
 
-        public Projet Create(Projet objet)
+        public Project Create(Project objet)
         {
-            _context.Projet.Add(objet);
+            _context.Project.Add(objet);
             _context.SaveChanges();
             return objet;
         }
@@ -29,31 +29,31 @@ namespace TheMapToScrum.Back.Repositories.Repo
             throw new NotImplementedException();
         }
 
-        public Projet Get(int id)
+        public Project Get(int id)
         {
 
-            return _context.Projet
+            return _context.Project
                 .Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public List<Projet> GetAll()
+        public List<Project> GetAll()
         {
             //proche bdd 
-            return _context.Projet
+            return _context.Project
                 .OrderByDescending(x => x.Name)
                 .ToList();
 
         }
 
-        public List<Projet> GetAllActive()
+        public List<Project> GetAllActive()
         {
-            return _context.Projet
+            return _context.Project
                 .OrderByDescending(x => x.Name)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
 
-        public Projet Update(Projet entity)
+        public Project Update(Project entity)
         {
             _context.Update(entity);
             _context.SaveChanges();

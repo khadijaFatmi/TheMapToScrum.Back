@@ -3,11 +3,11 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
 {
-    internal static class MapAuthor
+    internal static class MapBusinessManager
     {
-        internal static Author MapToEntity(AuthorDTO objet)
+        internal static BusinessManager MapToEntity(BusinessManagerDTO objet)
         {
-            Author retour = new Author();
+            BusinessManager retour = new BusinessManager();
             retour.Name = objet.Name;
             retour.Firstname = objet.Firstname;
             retour.Id = objet.Id;

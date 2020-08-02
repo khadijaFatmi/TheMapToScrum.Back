@@ -5,20 +5,20 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
 {
-    internal static class MapPoleDTO
+    internal static class MapDepartmentDTO
     {
-        internal static PoleDTO ToDto(Pole objet)
+        internal static DepartmentDTO ToDto(Department objet)
         {
-            PoleDTO retour = new PoleDTO();
+            DepartmentDTO retour = new DepartmentDTO();
             retour.Name = objet.Name;
             return retour;
         }
 
 
-        internal static List<PoleDTO> ToDto(List<Pole> liste)
+        internal static List<DepartmentDTO> ToDto(List<Department> liste)
         {
-            List<PoleDTO> retour = new List<PoleDTO>();
-            retour = liste.Select(x => new PoleDTO()
+            List<DepartmentDTO> retour = new List<DepartmentDTO>();
+            retour = liste.Select(x => new DepartmentDTO()
             {
 
                 Name = x.Name,

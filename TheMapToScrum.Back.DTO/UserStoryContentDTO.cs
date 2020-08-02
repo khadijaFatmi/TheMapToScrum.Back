@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.DTO
     public class UserStoryContentDTO : BaseEntityDTO
     {
         [Required]
-        public int ProjetId { get; set; }
+        public int ProjectId { get; set; }
         //
         [Required]
         public string Titre { get; set; }
@@ -24,7 +24,7 @@ namespace TheMapToScrum.Back.DTO
         [Required]
         public bool EpicStory { get; set; }
 
-        public ProjetDTO Projet { get; set; }
+        public ProjectDTO Project { get; set; }
 
     }
 }

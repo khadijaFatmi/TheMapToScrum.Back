@@ -10,22 +10,22 @@ namespace TheMapToScrum.Back.Controllers
     [Route("api/[controller]")]
         [Produces("application/json")]
         [ApiController]
-        public class AuthorController : Controller
+        public class BusinessManagerController : Controller
         {
             //injections dependances
-            private readonly IAuthorLogic _logic;
+            private readonly IBusinessManagerLogic _logic;
 
-            public AuthorController(IAuthorLogic logic)
+            public BusinessManagerController(IBusinessManagerLogic logic)
             {
                 _logic = logic;
 
             }
 
             [HttpGet]
-            [Produces(typeof(List<AuthorDTO>))]
-            public List<AuthorDTO> get()
+            [Produces(typeof(List<BusinessManagerDTO>))]
+            public List<BusinessManagerDTO> get()
             {
-                List<AuthorDTO> retour = new List<AuthorDTO>();
+                List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
                 retour = _logic.Liste();
                 return retour;
             }
@@ -34,13 +34,13 @@ namespace TheMapToScrum.Back.Controllers
             [HttpPost]
             [ProducesResponseType(StatusCodes.Status201Created)]
 
-            public ActionResult<AuthorDTO> Post([FromBody] AuthorDTO objet)
+            public ActionResult<BusinessManagerDTO> Post([FromBody] BusinessManagerDTO objet)
             {
                 if (ModelState.IsValid)
                 {
                     try
                     {
-                        AuthorDTO resultat = _logic.Create(objet);
+                        BusinessManagerDTO resultat = _logic.Create(objet);
                         return resultat;
                     }
                     catch
@@ -50,20 +50,20 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 else
                 {
-                    return BadRequest("AuthorDTO invalide");
+                    return BadRequest("BusinessManagerDTO invalide");
                 }
             }
 
             [HttpPut]
             [ProducesResponseType(StatusCodes.Status202Accepted)]
 
-            public ActionResult<AuthorDTO> Put([FromBody] AuthorDTO objet)
+            public ActionResult<BusinessManagerDTO> Put([FromBody] BusinessManagerDTO objet)
             {
                 if (ModelState.IsValid)
                 {
                     try
                     {
-                        AuthorDTO resultat = _logic.Update(objet);
+                        BusinessManagerDTO resultat = _logic.Update(objet);
                         return resultat;
                     }
                     catch
@@ -73,7 +73,7 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 else
                 {
-                    return BadRequest("AuthorDTO invalide");
+                    return BadRequest("BusinessManagerDTO invalide");
                 }
             }
 

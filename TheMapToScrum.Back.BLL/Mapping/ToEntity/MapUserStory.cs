@@ -1,4 +1,5 @@
-﻿using TheMapToScrum.Back.DAL.Entities;
+﻿using System.Runtime.CompilerServices;
+using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
@@ -11,6 +12,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
             UserStoryContent retour = new UserStoryContent();
             
             retour.Id = objet.Id;
+            retour.ProjectId = objet.ProjectId;
             retour.Titre = objet.Titre;
             retour.Name = objet.Name;
             retour.Version = objet.Version;
@@ -22,6 +24,9 @@ namespace TheMapToScrum.Back.BLL.Mapping
             retour.StoryPoints = objet.StoryPoints;
 
             retour.EpicStory = objet.EpicStory;
+            retour.IsDeleted = objet.IsDeleted;
+            retour.DateCreation = objet.DateCreation;
+            retour.DateModification = objet.DateModification;
             return retour;
         }
     }

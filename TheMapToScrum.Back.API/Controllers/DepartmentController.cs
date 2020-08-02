@@ -10,29 +10,29 @@ namespace TheMapToScrum.Back.Controllers
     [Produces("application/json")]
     [ApiController]
 
-    public class PoleController : Controller
+    public class DepartmentController : Controller
     {
-        private readonly IPoleLogic _logic;
+        private readonly IDepartmentLogic _logic;
 
-        public PoleController(IPoleLogic logic)
+        public DepartmentController(IDepartmentLogic logic)
         {
             _logic = logic;
         }
 
         [HttpGet]
-        [Produces(typeof(List<PoleDTO>))]
-        public List<PoleDTO> get()
+        [Produces(typeof(List<DepartmentDTO>))]
+        public List<DepartmentDTO> get()
         {
-            List<PoleDTO> retour = new List<PoleDTO>();
+            List<DepartmentDTO> retour = new List<DepartmentDTO>();
             retour = _logic.Liste();
             return retour;
         }
 
         [HttpGet]
-        [Produces(typeof(PoleDTO))]
-        public List<PoleDTO> Get()
+        [Produces(typeof(DepartmentDTO))]
+        public List<DepartmentDTO> Get()
         {
-            List<PoleDTO> retour = new List<PoleDTO>();
+            List<DepartmentDTO> retour = new List<DepartmentDTO>();
             retour = _logic.Liste();
             return retour;
         }
@@ -40,13 +40,13 @@ namespace TheMapToScrum.Back.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
 
-        public ActionResult<PoleDTO> Post([FromBody] PoleDTO objet)
+        public ActionResult<DepartmentDTO> Post([FromBody] DepartmentDTO objet)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    PoleDTO resultat = _logic.Create(objet);
+                    DepartmentDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
                 catch
@@ -63,13 +63,13 @@ namespace TheMapToScrum.Back.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
 
-        public ActionResult<PoleDTO> Put([FromBody] PoleDTO objet)
+        public ActionResult<DepartmentDTO> Put([FromBody] DepartmentDTO objet)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    PoleDTO resultat = _logic.Update(objet);
+                    DepartmentDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
                 catch
@@ -79,7 +79,7 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("PoleDTO invalide");
+                return BadRequest("DepartmentDTO invalide");
             }
         }
 

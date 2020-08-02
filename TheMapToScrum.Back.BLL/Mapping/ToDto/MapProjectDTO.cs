@@ -4,14 +4,14 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL
 {
-    internal static class MapProjetDTO
+    internal static class MapProjectDTO
     {
-        internal static ProjetDTO ToDto(TheMapToScrum.Back.DAL.Entities.Projet objet)
+        internal static ProjectDTO ToDto(TheMapToScrum.Back.DAL.Entities.Project objet)
         {
-            ProjetDTO retour = new ProjetDTO();
+            ProjectDTO retour = new ProjectDTO();
             if (null != objet)
             {
-                retour.AuthorId = objet.AuthorId;
+                retour.BusinessManagerId = objet.BusinessManagerId;
                 retour.DateCreation = objet.DateCreation;
                 retour.DateModification = objet.DateModification;
                 retour.Id = objet.Id;
@@ -23,14 +23,14 @@ namespace TheMapToScrum.Back.BLL
         }
 
         
-        internal static List<ProjetDTO> ToDto(List<TheMapToScrum.Back.DAL.Entities.Projet> liste)
+        internal static List<ProjectDTO> ToDto(List<TheMapToScrum.Back.DAL.Entities.Project> liste)
         {
             //récupération de la liste d'entités USContentDTO transformés en entités
-            List<ProjetDTO> retour = new List<ProjetDTO>();
-            retour = liste.Select(x => new ProjetDTO()
+            List<ProjectDTO> retour = new List<ProjectDTO>();
+            retour = liste.Select(x => new ProjectDTO()
             {
                 Id = x.Id,
-                AuthorId = x.AuthorId,
+                BusinessManagerId = x.BusinessManagerId,
                 DateCreation = x.DateCreation,
                 DateModification = x.DateModification,
                 IsDeleted = x.IsDeleted,

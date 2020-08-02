@@ -6,20 +6,20 @@ using TheMapToScrum.Back.DTO;
 namespace TheMapToScrum.Back.BLL.Mapping
 {
 
-    internal static class MapAuthorDTO
+    internal static class MapBusinessManagerDTO
     {
-        internal static AuthorDTO ToDto(Author objet)
+        internal static BusinessManagerDTO ToDto(BusinessManager objet)
         {
-            AuthorDTO retour = new AuthorDTO();
+            BusinessManagerDTO retour = new BusinessManagerDTO();
             retour.Name = objet.Name;
             return retour;
         }
 
 
-        internal static List<AuthorDTO> ToDto(List<Author> liste)
+        internal static List<BusinessManagerDTO> ToDto(List<BusinessManager> liste)
         {
-            List<AuthorDTO> retour = new List<AuthorDTO>();
-            retour = liste.Select(x => new AuthorDTO()
+            List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
+            retour = liste.Select(x => new BusinessManagerDTO()
             {
 
                 Name = x.Name,

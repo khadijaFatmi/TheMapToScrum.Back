@@ -15,13 +15,13 @@ namespace TheMapToScrum.Back.DAL
         }
 
         public virtual DbSet<UserStoryContent> UserStoryContent { get; set; }
-        public virtual DbSet<Projet> Projet { get; set; }
+        public virtual DbSet<Project> Project { get; set; }
 
-        public virtual DbSet<Author> Author { get; set; }
+        public virtual DbSet<BusinessManager> BusinessManager { get; set; }
 
         public virtual DbSet<Developer> Developer { get; set; }
 
-        public virtual DbSet<Pole> Pole { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
 
 
 

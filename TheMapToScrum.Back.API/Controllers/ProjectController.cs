@@ -11,22 +11,22 @@ namespace TheMapToScrum.Back.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class ProjetController : Controller
+    public class ProjectController : Controller
     {
         //injections dependances
-        private readonly IProjetLogic _logic;
+        private readonly IProjectLogic _logic;
 
-        public ProjetController(IProjetLogic logic)
+        public ProjectController(IProjectLogic logic)
         {
             _logic = logic;
-            
+
         }
 
         [HttpGet]
-        [Produces(typeof(List<ProjetDTO>))]
-        public List<ProjetDTO> get()
+        [Produces(typeof(List<ProjectDTO>))]
+        public List<ProjectDTO> get()
         {
-            List<ProjetDTO> retour = new List<ProjetDTO>();
+            List<ProjectDTO> retour = new List<ProjectDTO>();
             retour = _logic.Liste();
             return retour;
         }
@@ -34,13 +34,13 @@ namespace TheMapToScrum.Back.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
 
-        public ActionResult<ProjetDTO> Post([FromBody] ProjetDTO objet)
+        public ActionResult<ProjectDTO> Post([FromBody] ProjectDTO objet)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    ProjetDTO resultat = _logic.Create(objet);
+                    ProjectDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
                 catch
@@ -50,20 +50,20 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("ProjetDTO invalide");
+                return BadRequest("ProjectDTO invalide");
             }
         }
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
 
-        public ActionResult<ProjetDTO> Put([FromBody] ProjetDTO objet)
+        public ActionResult<ProjectDTO> Put([FromBody] ProjectDTO objet)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    ProjetDTO resultat = _logic.Update(objet);
+                    ProjectDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
                 catch
@@ -73,7 +73,7 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("ProjetDTO invalide");
+                return BadRequest("ProjectDTO invalide");
             }
         }
 

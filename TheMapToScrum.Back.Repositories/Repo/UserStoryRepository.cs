@@ -26,7 +26,21 @@ namespace TheMapToScrum.Back.Repositories.Repo
 
         public bool Delete(int Id)
         {
-            throw new NotImplementedException();
+            bool resultat = false;
+            try
+            {
+                UserStoryContent entite = _context.UserStoryContent.Where(x => x.Id == Id).First();
+                entite.IsDeleted = true;
+                entite.DateModification = DateTime.Now;
+                _context.Update(entite);
+                _context.SaveChanges();
+                resultat = true;
+                return resultat;
+            }
+            catch (Exception ex)
+            {
+            }
+            return false;
         }
 
         public UserStoryContent Get(int id)
@@ -39,7 +53,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<UserStoryContent> GetAll()
         {
             //proche bdd 
-            return _context.UserStoryContent.Include(p => p.Projet)
+            return _context.UserStoryContent.Include(p => p.Project)
                 .OrderByDescending(x => x.Name)
                 .ToList();
 
@@ -48,7 +62,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<UserStoryContent> GetAllActive()
         {
             
-            return _context.UserStoryContent.Include(p => p.Projet)
+            return _context.UserStoryContent.Include(p => p.Project)
                 .OrderByDescending(x => x.Name)
                 .Where(x => !x.IsDeleted)
                 .ToList();

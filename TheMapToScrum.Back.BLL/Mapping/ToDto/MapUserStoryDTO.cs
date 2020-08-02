@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
@@ -10,18 +12,24 @@ namespace TheMapToScrum.Back.BLL
         internal static UserStoryContentDTO ToDto(UserStoryContent objet)
         {
             UserStoryContentDTO retour = new UserStoryContentDTO();
-            retour.Id = objet.Id;
-            retour.Titre = objet.Titre;
-            retour.Name = objet.Name;
-            retour.Version = objet.Version;
-            retour.Role = objet.Role;
-            retour.Function1 = objet.Function1;
-            retour.Function2 = objet.Function2;
-            retour.Notes = objet.Notes;
-            retour.Priority = objet.Priority;
-            retour.StoryPoints = objet.StoryPoints;
-            retour.EpicStory = objet.EpicStory;
-            retour.IsDeleted = objet.IsDeleted;
+            if (objet != null)
+            {
+                retour.Id = objet.Id;
+                retour.ProjectId = objet.ProjectId;
+                retour.Titre = objet.Titre;
+                retour.Name = objet.Name;
+                retour.Version = objet.Version;
+                retour.Role = objet.Role;
+                retour.Function1 = objet.Function1;
+                retour.Function2 = objet.Function2;
+                retour.Notes = objet.Notes;
+                retour.Priority = objet.Priority;
+                retour.StoryPoints = objet.StoryPoints;
+                retour.EpicStory = objet.EpicStory;
+                retour.IsDeleted = objet.IsDeleted;
+                retour.DateCreation = objet.DateCreation;
+                retour.DateModification = DateTime.Now;
+            }
 
             return retour;
         
@@ -39,7 +47,7 @@ namespace TheMapToScrum.Back.BLL
                 Version = x.Version,
                 Name = x.Name,
                 Role = x.Role,
-                Projet = MapProjetDTO.ToDto(x.Projet),
+                Project = MapProjectDTO.ToDto(x.Project),
                 Priority = x.Priority,
                 DateCreation = x.DateCreation,
                 DateModification = x.DateModification,
@@ -49,7 +57,7 @@ namespace TheMapToScrum.Back.BLL
                 Function2 = x.Function2,
                 Notes = x.Notes,
                 IsDeleted = x.IsDeleted,
-                ProjetId = x.ProjetId
+                ProjectId = x.ProjectId
 
                 
 

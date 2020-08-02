@@ -2,7 +2,7 @@
 {
     public class UserStoryContent : EntityBase
     {
-        public int ProjetId { get; set; }
+        public int ProjectId { get; set; }
         public string Titre { get; set; }
         public string Name { get; set; }
         public string Version { get; set; }
@@ -14,6 +14,6 @@
         public int StoryPoints { get; set; }
         public bool EpicStory { get; set; }
 
-        public Projet Projet { get; set; }
+        public Project Project { get; set; }
     }
 }

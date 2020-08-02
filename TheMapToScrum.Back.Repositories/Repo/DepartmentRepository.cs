@@ -7,44 +7,46 @@ using TheMapToScrum.Back.Repositories.Contract;
 
 namespace TheMapToScrum.Back.Repositories.Repo
 {
-    public class AuthorRepository : IAuthorRepository
+    public class DepartmentRepository : IDepartmentRepository
     {
         private readonly ApplicationContext _context;
 
-        public AuthorRepository(ApplicationContext context)
+
+        public DepartmentRepository(ApplicationContext context)
         {
             _context = context;
         }
 
-        public Author Create(Author objet)
+        public Department Create(Department objet)
         {
-            _context.Author.Add(objet);
+            _context.Department.Add(objet);
             _context.SaveChanges();
             return objet;
         }
 
-        public Author Get(int id)
+        public Department Get(int id)
         {
-            return _context.Author
-            .Where(x => x.Id == id).FirstOrDefault();
+            return _context.Department
+                .Where(x => x.Id == id).FirstOrDefault();
+
         }
 
-        public List<Author> GetAll()
+        public List<Department> GetAll()
         {
-            return _context.Author
+            return _context.Department
                 .OrderByDescending(x => x.Name)
                 .ToList();
         }
 
-        public List<Author> GetAllActive()
+        public List<Department> GetAllActive()
         {
-            return _context.Author
+            return _context.Department
                 .OrderByDescending(x => x.Name)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
 
-        public Author Update(Author entity)
+        public Department Update(Department entity)
         {
             _context.Update(entity);
             _context.SaveChanges();
@@ -57,7 +59,6 @@ namespace TheMapToScrum.Back.Repositories.Repo
         {
             throw new NotImplementedException();
         }
-
 
 
     }

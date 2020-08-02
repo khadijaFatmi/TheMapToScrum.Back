@@ -3,11 +3,11 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
 {
-    internal static class MapPole
+    internal static class MapDepartment
     {
-        internal static Pole MapToEntity(PoleDTO objet)
+        internal static Department MapToEntity(DepartmentDTO objet)
         {
-            Pole retour = new Pole();
+            Department retour = new Department();
             retour.Name = objet.Name;
             retour.Id = objet.Id;
             retour.DateCreation = objet.DateCreation;

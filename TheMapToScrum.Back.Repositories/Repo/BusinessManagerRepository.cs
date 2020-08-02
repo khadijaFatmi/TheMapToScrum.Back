@@ -7,46 +7,44 @@ using TheMapToScrum.Back.Repositories.Contract;
 
 namespace TheMapToScrum.Back.Repositories.Repo
 {
-    public class PoleRepository : IPoleRepository
+    public class BusinessManagerRepository : IBusinessManagerRepository
     {
         private readonly ApplicationContext _context;
 
-
-        public PoleRepository(ApplicationContext context)
+        public BusinessManagerRepository(ApplicationContext context)
         {
             _context = context;
         }
 
-        public Pole Create(Pole objet)
+        public BusinessManager Create(BusinessManager objet)
         {
-            _context.Pole.Add(objet);
+            _context.BusinessManager.Add(objet);
             _context.SaveChanges();
             return objet;
         }
 
-        public Pole Get(int id)
+        public BusinessManager Get(int id)
         {
-            return _context.Pole
-                .Where(x => x.Id == id).FirstOrDefault();
-
+            return _context.BusinessManager
+            .Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public List<Pole> GetAll()
+        public List<BusinessManager> GetAll()
         {
-            return _context.Pole
+            return _context.BusinessManager
                 .OrderByDescending(x => x.Name)
                 .ToList();
         }
 
-        public List<Pole> GetAllActive()
+        public List<BusinessManager> GetAllActive()
         {
-            return _context.Pole
+            return _context.BusinessManager
                 .OrderByDescending(x => x.Name)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
 
-        public Pole Update(Pole entity)
+        public BusinessManager Update(BusinessManager entity)
         {
             _context.Update(entity);
             _context.SaveChanges();
@@ -59,6 +57,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         {
             throw new NotImplementedException();
         }
+
 
 
     }

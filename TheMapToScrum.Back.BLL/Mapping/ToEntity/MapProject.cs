@@ -3,12 +3,12 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
 {
-    internal static class MapProjet
+    internal static class MapProject
     {
-        internal static Projet MapToEntity(ProjetDTO objet)
+        internal static Project MapToEntity(ProjectDTO objet)
         {
-            Projet retour = new Projet();
-            retour.AuthorId = objet.AuthorId;
+            Project retour = new Project();
+            retour.BusinessManagerId = objet.BusinessManagerId;
             retour.DateCreation = objet.DateCreation;
             retour.DateModification = objet.DateModification;
             retour.Id = objet.Id;

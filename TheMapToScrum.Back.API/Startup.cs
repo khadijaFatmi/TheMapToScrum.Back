@@ -34,11 +34,11 @@ namespace TheMapToScrum.Back.API
             {
                 options.UseSqlServer(strConn);
             });
-            services.AddScoped<IProjetLogic, ProjetLogic>();
-            services.AddScoped<IProjetRepository, ProjetRepository>();
+            services.AddScoped<IProjectLogic, ProjectLogic>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
 
-            services.AddScoped<IAuthorLogic, AuthorLogic>();
-            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IBusinessManagerLogic, BusinessManagerLogic>();
+            services.AddScoped<IBusinessManagerRepository, BusinessManagerRepository>();
 
             services.AddScoped<IDeveloperLogic, DeveloperLogic>();
             services.AddScoped<IDeveloperRepository, DeveloperRepository>();
@@ -48,8 +48,8 @@ namespace TheMapToScrum.Back.API
             services.AddScoped<IUserStoryLogic, UserStoryLogic>();
             services.AddScoped<IUserStoryRepository, UserStoryRepository>();
 
-            services.AddScoped<IPoleLogic, PoleLogic>();
-            services.AddScoped<IPoleRepository, PoleRepository>();
+            services.AddScoped<IDepartmentLogic, DepartmentLogic>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             //services.AddControllers();
 
             services.AddCors(); // Make sure you call this previous to AddMvc
@@ -76,7 +76,7 @@ namespace TheMapToScrum.Back.API
 
              app.UseRouting();
 
-             app.UseAuthorization();
+             app.UseBusinessManagerization();
 
              app.UseEndpoints(endpoints =>
              {

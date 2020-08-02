@@ -1,6 +1,6 @@
 ﻿namespace TheMapToScrum.Back.DTO
 {
-    public class PoleDTO : BaseEntityDTO
+    public class DepartmentDTO : BaseEntityDTO
     {
         public string Name { get; set; }
     }
