@@ -8,7 +8,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
         internal static Department MapToEntity(DepartmentDTO objet)
         {
             Department retour = new Department();
-            retour.Name = objet.Name;
+            retour.Label = objet.Label;
             retour.Id = objet.Id;
             retour.DateCreation = objet.DateCreation;
             retour.DateModification = objet.DateModification;

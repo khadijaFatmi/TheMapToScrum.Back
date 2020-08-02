@@ -16,8 +16,8 @@ namespace TheMapToScrum.Back.BLL
             {
                 retour.Id = objet.Id;
                 retour.ProjectId = objet.ProjectId;
-                retour.Titre = objet.Titre;
-                retour.Name = objet.Name;
+               
+                retour.Label = objet.Label;
                 retour.Version = objet.Version;
                 retour.Role = objet.Role;
                 retour.Function1 = objet.Function1;
@@ -43,9 +43,8 @@ namespace TheMapToScrum.Back.BLL
             retour = liste.Select(x => new UserStoryContentDTO()
             {
                 Id = x.Id,
-                Titre = x.Titre,
                 Version = x.Version,
-                Name = x.Name,
+                Label = x.Label,
                 Role = x.Role,
                 Project = MapProjectDTO.ToDto(x.Project),
                 Priority = x.Priority,

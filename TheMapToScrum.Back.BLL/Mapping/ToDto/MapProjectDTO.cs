@@ -16,7 +16,7 @@ namespace TheMapToScrum.Back.BLL
                 retour.DateModification = objet.DateModification;
                 retour.Id = objet.Id;
                 retour.IsDeleted = objet.IsDeleted;
-                retour.Name = objet.Name;
+                retour.Label = objet.Label;
             }
             return retour;
             
@@ -30,11 +30,11 @@ namespace TheMapToScrum.Back.BLL
             retour = liste.Select(x => new ProjectDTO()
             {
                 Id = x.Id,
-                BusinessManagerId = x.BusinessManagerId,
+                BusinessManagerId = (int)x.BusinessManagerId,
                 DateCreation = x.DateCreation,
                 DateModification = x.DateModification,
                 IsDeleted = x.IsDeleted,
-                Name = x.Name
+                Label = x.Label
                 
                 //proprietes dto
 

@@ -10,7 +10,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
         internal static DepartmentDTO ToDto(Department objet)
         {
             DepartmentDTO retour = new DepartmentDTO();
-            retour.Name = objet.Name;
+            retour.Label = objet.Label;
             return retour;
         }
 
@@ -21,7 +21,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
             retour = liste.Select(x => new DepartmentDTO()
             {
 
-                Name = x.Name,
+                Label = x.Label,
                 Id = x.Id,
                 DateCreation = x.DateCreation,
                 DateModification = x.DateModification,

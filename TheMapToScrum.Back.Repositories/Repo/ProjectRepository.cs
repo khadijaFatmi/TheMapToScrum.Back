@@ -40,7 +40,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         {
             //proche bdd 
             return _context.Project
-                .OrderByDescending(x => x.Name)
+                .OrderByDescending(x => x.Label)
                 .ToList();
 
         }
@@ -48,7 +48,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<Project> GetAllActive()
         {
             return _context.Project
-                .OrderByDescending(x => x.Name)
+                .OrderByDescending(x => x.Label)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }

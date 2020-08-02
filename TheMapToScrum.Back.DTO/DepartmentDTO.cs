@@ -2,6 +2,6 @@
 {
     public class DepartmentDTO : BaseEntityDTO
     {
-        public string Name { get; set; }
+        public string Label { get; set; }
     }
 }

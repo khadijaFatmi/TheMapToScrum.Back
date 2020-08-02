@@ -11,8 +11,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
         internal static DeveloperDTO ToDto(Developer objet)
         {
             DeveloperDTO retour = new DeveloperDTO();
-            retour.Name = objet.Name;
-            retour.Firstname = objet.Firstname;
+            retour.LastName = objet.LastName;
+            retour.FirstName = objet.FirstName;
             return retour;
 
         }
@@ -22,8 +22,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
             List<DeveloperDTO> retour = new List<DeveloperDTO>();
             retour = liste.Select(x => new DeveloperDTO()
             {
-                Name = x.Name,
-                Firstname = x.Firstname,
+                LastName = x.LastName,
+                FirstName = x.FirstName,
                 Id = x.Id,
                 DateCreation = x.DateCreation,
                 DateModification = x.DateModification,

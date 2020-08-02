@@ -32,14 +32,14 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<BusinessManager> GetAll()
         {
             return _context.BusinessManager
-                .OrderByDescending(x => x.Name)
+                .OrderByDescending(x => x.FirstName)
                 .ToList();
         }
 
         public List<BusinessManager> GetAllActive()
         {
             return _context.BusinessManager
-                .OrderByDescending(x => x.Name)
+                .OrderByDescending(x => x.FirstName)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }

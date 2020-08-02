@@ -3,8 +3,8 @@
     public class UserStoryContent : EntityBase
     {
         public int ProjectId { get; set; }
-        public string Titre { get; set; }
-        public string Name { get; set; }
+        
+        public string Label { get; set; }
         public string Version { get; set; }
         public string Role { get; set; }
         public string Function1 { get; set; }

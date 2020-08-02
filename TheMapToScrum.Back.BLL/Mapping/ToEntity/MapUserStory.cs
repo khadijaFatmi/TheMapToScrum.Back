@@ -13,8 +13,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
             
             retour.Id = objet.Id;
             retour.ProjectId = objet.ProjectId;
-            retour.Titre = objet.Titre;
-            retour.Name = objet.Name;
+     
+            retour.Label = objet.Label;
             retour.Version = objet.Version;
             retour.Role = objet.Role;
             retour.Function1 = objet.Function1;

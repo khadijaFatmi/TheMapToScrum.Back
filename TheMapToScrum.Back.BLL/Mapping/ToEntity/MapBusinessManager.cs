@@ -8,8 +8,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
         internal static BusinessManager MapToEntity(BusinessManagerDTO objet)
         {
             BusinessManager retour = new BusinessManager();
-            retour.Name = objet.Name;
-            retour.Firstname = objet.Firstname;
+            retour.LastName = objet.LastName;
+            retour.FirstName = objet.FirstName;
             retour.Id = objet.Id;
             retour.IsDeleted = objet.IsDeleted;
             retour.DateCreation = objet.DateCreation;

@@ -3,7 +3,7 @@
     public class Department : EntityBase
     {
        
-        public string Name { get; set; }
+        public string Label { get; set; }
     }
 }
 

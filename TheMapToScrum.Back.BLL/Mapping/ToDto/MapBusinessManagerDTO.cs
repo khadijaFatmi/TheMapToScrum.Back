@@ -11,7 +11,9 @@ namespace TheMapToScrum.Back.BLL.Mapping
         internal static BusinessManagerDTO ToDto(BusinessManager objet)
         {
             BusinessManagerDTO retour = new BusinessManagerDTO();
-            retour.Name = objet.Name;
+            retour.LastName = objet.LastName;
+            retour.FirstName = objet.FirstName;
+           
             return retour;
         }
 
@@ -22,8 +24,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
             retour = liste.Select(x => new BusinessManagerDTO()
             {
 
-                Name = x.Name,
-                Firstname = x.Firstname,
+                LastName = x.LastName,
+                FirstName = x.FirstName,
                 Id = x.Id,
                 DateCreation = x.DateCreation,
                 DateModification = x.DateModification,

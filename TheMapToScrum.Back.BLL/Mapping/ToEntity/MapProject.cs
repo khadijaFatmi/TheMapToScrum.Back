@@ -13,7 +13,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
             retour.DateModification = objet.DateModification;
             retour.Id = objet.Id;
             retour.IsDeleted = objet.IsDeleted;
-            retour.Name = objet.Name;
+            retour.Label = objet.Label;
             return retour;
         }
     }

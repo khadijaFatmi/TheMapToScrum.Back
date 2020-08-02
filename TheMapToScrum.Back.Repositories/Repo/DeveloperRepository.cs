@@ -32,7 +32,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<Developer> GetAll()
         {
             return _context.Developer
-                .OrderByDescending(x => x.Name)
+                .OrderByDescending(x => x.FirstName)
                 .ToList();
         }
 

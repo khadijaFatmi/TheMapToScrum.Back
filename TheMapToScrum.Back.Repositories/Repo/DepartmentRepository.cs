@@ -34,14 +34,14 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<Department> GetAll()
         {
             return _context.Department
-                .OrderByDescending(x => x.Name)
+                .OrderByDescending(x => x.Label)
                 .ToList();
         }
 
         public List<Department> GetAllActive()
         {
             return _context.Department
-                .OrderByDescending(x => x.Name)
+                .OrderByDescending(x => x.Label)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
