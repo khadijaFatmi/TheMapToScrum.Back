@@ -5,11 +5,15 @@ namespace TheMapToScrum.Back.BLL.Interfaces
 {
     public interface IBusinessManagerLogic
     {
-        List<BusinessManagerDTO> Liste();
+
+        List<BusinessManagerDTO> List();
+        List<BusinessManagerDTO> ListActive();
 
         BusinessManagerDTO Create(BusinessManagerDTO objet);
 
         BusinessManagerDTO Update(BusinessManagerDTO objet);
+        bool Delete(int id);
+        BusinessManagerDTO GetById(int id);
 
 
     }

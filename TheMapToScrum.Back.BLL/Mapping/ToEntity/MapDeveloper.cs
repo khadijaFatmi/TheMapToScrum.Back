@@ -8,21 +8,9 @@ namespace TheMapToScrum.Back.BLL.Mapping
         internal static Developer MapToEntity(DeveloperDTO objet)
         {
             Developer retour = new Developer();
+            retour.Id = objet.Id;
             retour.LastName = objet.LastName;
             retour.FirstName = objet.FirstName;
-            retour.Id = objet.Id;
-            retour.DateCreation = objet.DateCreation;
-            retour.DateModification = objet.DateModification;
-            retour.IsDeleted = objet.IsDeleted;
-            return retour;
-        }
-
-        internal static Developer MapToDTO(DeveloperDTO objet)
-        {
-            Developer retour = new Developer();
-            retour.LastName = objet.LastName;
-            retour.FirstName = objet.FirstName;
-            retour.Id = objet.Id;
             retour.DateCreation = objet.DateCreation;
             retour.DateModification = objet.DateModification;
             retour.IsDeleted = objet.IsDeleted;

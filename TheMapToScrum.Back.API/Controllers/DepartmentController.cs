@@ -24,7 +24,7 @@ namespace TheMapToScrum.Back.Controllers
         public List<DepartmentDTO> get()
         {
             List<DepartmentDTO> retour = new List<DepartmentDTO>();
-            retour = _logic.Liste();
+            retour = _logic.List();
             return retour;
         }
 
@@ -33,7 +33,7 @@ namespace TheMapToScrum.Back.Controllers
         public List<DepartmentDTO> Get()
         {
             List<DepartmentDTO> retour = new List<DepartmentDTO>();
-            retour = _logic.Liste();
+            retour = _logic.List();
             return retour;
         }
 

@@ -5,59 +5,60 @@ using TheMapToScrum.Back.DAL;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.Repositories.Contract;
 
+
 namespace TheMapToScrum.Back.Repositories.Repo
 {
-    public class DeveloperRepository : IDeveloperRepository
+    public class TechnicalManagerRepository : ITechnicalManagerRepository
     {
         private readonly ApplicationContext _context;
 
-        public DeveloperRepository(ApplicationContext context)
+        public TechnicalManagerRepository(ApplicationContext context)
         {
             _context = context;
         }
 
-        public Developer Create(Developer objet)
+        public TechnicalManager Create(TechnicalManager objet)
         {
-            _context.Developer.Add(objet);
+            _context.TechnicalManager.Add(objet);
             _context.SaveChanges();
             return objet;
         }
 
-        public Developer Get(int id)
+        public TechnicalManager Get(int id)
         {
-            return _context.Developer
+            return _context.TechnicalManager
             .Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public List<Developer> GetAll()
+
+        public List<TechnicalManager> GetAll()
         {
-            return _context.Developer
+            return _context.TechnicalManager
                 .OrderByDescending(x => x.FirstName)
                 .ToList();
         }
 
-        public List<Developer> GetAllActive()
+        public List<TechnicalManager> GetAllActive()
         {
-            return _context.Developer
+            return _context.TechnicalManager
+                .OrderByDescending(x => x.FirstName)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
 
-        public Developer Update(Developer entity)
+        public TechnicalManager Update(TechnicalManager entity)
         {
             _context.Update(entity);
             _context.SaveChanges();
             return entity;
         }
 
-
-
-        public bool Delete(int Id)
+        public bool Delete(int Id) 
         {
             bool resultat = false;
             try
             {
-                Developer entite = _context.Developer.Where(x => x.Id == Id).First();
+                TechnicalManager entite = _context.TechnicalManager.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
                 entite.DateModification = DateTime.Now;
                 _context.Update(entite);
@@ -69,7 +70,6 @@ namespace TheMapToScrum.Back.Repositories.Repo
             }
             return resultat;
         }
-
 
     }
 }

@@ -33,17 +33,17 @@ namespace TheMapToScrum.Back.BLL
             return retour;
         }
 
-        public bool Delete(int id)
+        public bool Delete(int Id)
         {
            
-            bool resultat = _repo.Delete(id);
+            bool resultat = _repo.Delete(Id);
             return resultat;
         }
 
-        public UserStoryContentDTO GetById(int id)
+        public UserStoryContentDTO GetById(int Id)
         {
             UserStoryContentDTO retour = new UserStoryContentDTO();
-            UserStoryContent objet = _repo.Get(id);
+            UserStoryContent objet = _repo.Get(Id);
             retour = MapUserStoryContentDTO.ToDto(objet);
             return retour;
 

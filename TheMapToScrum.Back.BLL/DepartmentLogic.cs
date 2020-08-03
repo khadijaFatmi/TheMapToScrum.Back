@@ -30,7 +30,7 @@ namespace TheMapToScrum.Back.BLL
             DepartmentDTO retour = MapDepartmentDTO.ToDto(resultat);
             return retour;
         }
-        public List<DepartmentDTO> Liste()
+        public List<DepartmentDTO> List()
         {
             List<DepartmentDTO> retour = new List<DepartmentDTO>();
             List<Department> liste = _repo.GetAll();
@@ -39,14 +39,28 @@ namespace TheMapToScrum.Back.BLL
 
         }
 
-        public DepartmentDTO GetById(int id)
+        public List<DepartmentDTO> ListActive()
+        {
+            List<DepartmentDTO> retour = new List<DepartmentDTO>();
+            List<Department> liste = _repo.GetAllActive();
+            retour = MapDepartmentDTO.ToDto(liste);
+            return retour;
+
+        }
+
+        public DepartmentDTO GetById(int Id)
         {
             DepartmentDTO retour = new DepartmentDTO();
-            Department objet = _repo.Get(id);
+            Department objet = _repo.Get(Id);
             retour = MapDepartmentDTO.ToDto(objet);
             return retour;
         }
 
+        public bool Delete(int Id)
+        {
 
+            bool resultat = _repo.Delete(Id);
+            return resultat;
+        }
     }
 }

@@ -5,11 +5,16 @@ namespace TheMapToScrum.Back.BLL.Interfaces
 {
     public interface IDepartmentLogic
     {
-        List<DepartmentDTO> Liste();
+
+
+        List<DepartmentDTO> List();
+        List<DepartmentDTO> ListActive();
 
         DepartmentDTO Create(DepartmentDTO objet);
 
         DepartmentDTO Update(DepartmentDTO objet);
+        bool Delete(int Id);
+        DepartmentDTO GetById(int Id);
 
 
     }

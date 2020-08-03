@@ -34,28 +34,31 @@ namespace TheMapToScrum.Back.BLL
             return retour;
         }
 
-        public bool Delete(int id)
+
+        public bool Delete(int Id)
         {
-            throw new NotImplementedException();
+
+            bool resultat = _repo.Delete(Id);
+            return resultat;
         }
 
-        public ProjectDTO GetById(int id)
+        public ProjectDTO GetById(int Id)
         {
             ProjectDTO retour = new ProjectDTO();
-            Project objet = _repo.Get(id);
+            Project objet = _repo.Get(Id);
             retour = MapProjectDTO.ToDto(objet);
             return retour;
 
         }
 
-        public List<ProjectDTO> Liste()
+        public List<ProjectDTO> List()
         {
             List<ProjectDTO> retour = new List<ProjectDTO>();
             List<Project> liste = _repo.GetAll();
             retour = MapProjectDTO.ToDto(liste);
             return retour;
         }
-        public List<ProjectDTO> listActive()
+        public List<ProjectDTO> ListActive()
         {
             throw new NotImplementedException();
         }

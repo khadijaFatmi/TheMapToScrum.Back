@@ -29,10 +29,19 @@ namespace TheMapToScrum.Back.BLL
             BusinessManagerDTO retour = MapBusinessManagerDTO.ToDto(resultat);
             return retour;
         }
-        public List<BusinessManagerDTO> Liste() 
+        public List<BusinessManagerDTO> List() 
         {
             List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
             List<BusinessManager> liste = _repo.GetAll();
+            retour = MapBusinessManagerDTO.ToDto(liste);
+            return retour;
+
+        }
+
+        public List<BusinessManagerDTO> ListActive()
+        {
+            List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
+            List<BusinessManager> liste = _repo.GetAllActive();
             retour = MapBusinessManagerDTO.ToDto(liste);
             return retour;
 
@@ -46,5 +55,9 @@ namespace TheMapToScrum.Back.BLL
             return retour;
         }
 
+        public bool Delete(int id)
+        {
+            return _repo.Delete(id);
+        }
     }
 }

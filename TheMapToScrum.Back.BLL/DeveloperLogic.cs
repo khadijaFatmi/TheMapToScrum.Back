@@ -17,10 +17,21 @@ namespace TheMapToScrum.Back.BLL
         {
             _repo = repo;
         }
-        public List<DeveloperDTO> Liste()
+        public List<DeveloperDTO> List()
         {
             List<DeveloperDTO> retour = new List<DeveloperDTO>();
             List<Developer> liste = _repo.GetAll();
+            retour = MapDeveloperDTO.ToDto(liste);
+            return retour;
+
+
+        }
+
+
+        public List<DeveloperDTO> ListActive()
+        {
+            List<DeveloperDTO> retour = new List<DeveloperDTO>();
+            List<Developer> liste = _repo.GetAllActive();
             retour = MapDeveloperDTO.ToDto(liste);
             return retour;
 
@@ -44,9 +55,19 @@ namespace TheMapToScrum.Back.BLL
             return retour;
         }
 
-        public bool Delete(int id)
+        public DeveloperDTO GetById(int Id)
         {
-            throw new NotImplementedException();
+            DeveloperDTO retour = new DeveloperDTO();
+            Developer objet = _repo.Get(Id);
+            retour = MapDeveloperDTO.ToDto(objet);
+            return retour;
+
+        }
+        public bool Delete(int Id)
+        {
+
+            bool resultat = _repo.Delete(Id);
+            return resultat;
         }
     }
 }

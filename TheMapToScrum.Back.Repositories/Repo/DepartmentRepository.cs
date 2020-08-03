@@ -54,10 +54,22 @@ namespace TheMapToScrum.Back.Repositories.Repo
 
         }
 
-        //inutilisée (cf suppression logique IsDeleted)
         public bool Delete(int Id)
         {
-            throw new NotImplementedException();
+            bool resultat = false;
+            try
+            {
+                Department entite = _context.Department.Where(x => x.Id == Id).First();
+                entite.IsDeleted = true;
+                entite.DateModification = DateTime.Now;
+                _context.Update(entite);
+                _context.SaveChanges();
+                resultat = true;
+            }
+            catch (Exception ex)
+            {
+            }
+            return resultat;
         }
 
 

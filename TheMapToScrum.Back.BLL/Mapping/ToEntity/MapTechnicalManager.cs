@@ -1,16 +1,20 @@
-﻿using TheMapToScrum.Back.DAL.Entities;
+﻿using System;
+using System.Collections.Generic;
+
+
+using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
 {
-    internal static class MapBusinessManager
+    internal static class MapTechnicalManager
     {
-        internal static BusinessManager MapToEntity(BusinessManagerDTO objet)
+        internal static TechnicalManager ToEntity(TechnicalManagerDTO objet)
         {
-            BusinessManager retour = new BusinessManager();
+            TechnicalManager retour = new TechnicalManager();
             retour.Id = objet.Id;
             retour.LastName = objet.LastName;
-            retour.FirstName = objet.FirstName;
+            retour.FirstName = objet.FirstName;           
             retour.IsDeleted = objet.IsDeleted;
             retour.DateCreation = objet.DateCreation;
             retour.DateCreation = objet.DateCreation;

@@ -12,6 +12,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
             DepartmentDTO retour = new DepartmentDTO();
             if (objet != null)
             {
+                retour.Id = objet.Id;
                 retour.Label = objet.Label;
             }
                 return retour;
@@ -23,9 +24,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
             List<DepartmentDTO> retour = new List<DepartmentDTO>();
             retour = liste.Select(x => new DepartmentDTO()
             {
-
-                Label = x.Label,
                 Id = x.Id,
+                Label = x.Label,
                 DateCreation = x.DateCreation,
                 DateModification = x.DateModification,
                 IsDeleted = x.IsDeleted

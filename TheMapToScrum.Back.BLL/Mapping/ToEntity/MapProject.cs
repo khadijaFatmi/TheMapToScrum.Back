@@ -8,12 +8,13 @@ namespace TheMapToScrum.Back.BLL.Mapping
         internal static Project MapToEntity(ProjectDTO objet)
         {
             Project retour = new Project();
+            retour.Id = objet.Id;
+            retour.Label = objet.Label;
             retour.BusinessManagerId = objet.BusinessManagerId;
             retour.DateCreation = objet.DateCreation;
             retour.DateModification = objet.DateModification;
-            retour.Id = objet.Id;
             retour.IsDeleted = objet.IsDeleted;
-            retour.Label = objet.Label;
+            
             return retour;
         }
     }

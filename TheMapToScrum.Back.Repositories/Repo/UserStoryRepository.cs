@@ -29,18 +29,18 @@ namespace TheMapToScrum.Back.Repositories.Repo
             bool resultat = false;
             try
             {
+                //select * from
                 UserStoryContent entite = _context.UserStoryContent.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
                 entite.DateModification = DateTime.Now;
                 _context.Update(entite);
                 _context.SaveChanges();
-                resultat = true;
-                return resultat;
+                resultat = true;                
             }
             catch (Exception ex)
             {
             }
-            return false;
+            return resultat;
         }
 
         public UserStoryContent Get(int id)

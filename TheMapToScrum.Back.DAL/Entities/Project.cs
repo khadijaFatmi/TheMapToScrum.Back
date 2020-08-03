@@ -19,6 +19,8 @@ namespace TheMapToScrum.Back.DAL.Entities
         public Department Department { get; set; }
         public TechnicalManager TechnicalManager { get; set; }
 
+        public Developer Developer { get; set; }
+
         public Team Team { get; set; }
         public List<UserStoryContent> UserStories { get; set; }
     }

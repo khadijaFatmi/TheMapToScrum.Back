@@ -28,7 +28,20 @@ namespace TheMapToScrum.Back.Repositories.Repo
 
         public bool Delete(int Id)
         {
-            throw new NotImplementedException();
+            bool resultat = false;
+            try
+            {
+                Project entite = _context.Project.Where(x => x.Id == Id).First();
+                entite.IsDeleted = true;
+                entite.DateModification = DateTime.Now;
+                _context.Update(entite);
+                _context.SaveChanges();
+                resultat = true;
+            }
+            catch (Exception ex)
+            {
+            }
+            return resultat;
         }
 
         public Project Get(int id)
