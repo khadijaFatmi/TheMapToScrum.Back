@@ -23,8 +23,7 @@ namespace TheMapToScrum.Back.BLL
                 retour.Department = MapDepartmentDTO.ToDto(objet.Department);
                 retour.TechnicalManager = MapTechnicalManagerDTO.ToDto(objet.TechnicalManager);
                 retour.BusinessManager = MapBusinessManagerDTO.ToDto(objet.BusinessManager);
-                retour.Team = MapTeamDTO.ToDto(objet.Team);
-                retour.Developer = MapDeveloperDTO.ToDto(objet.Developer);
+                retour.Team = MapTeamDTO.ToDto(objet.Team);                
                 retour.DateCreation = objet.DateCreation;
                 retour.DateModification = objet.DateModification;               
                 retour.IsDeleted = objet.IsDeleted;

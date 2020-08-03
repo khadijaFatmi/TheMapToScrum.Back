@@ -19,14 +19,7 @@ namespace TheMapToScrum.Back.Controllers
             _logic = logic;
         }
 
-        [HttpGet]
-        [Produces(typeof(List<DepartmentDTO>))]
-        public List<DepartmentDTO> get()
-        {
-            List<DepartmentDTO> retour = new List<DepartmentDTO>();
-            retour = _logic.List();
-            return retour;
-        }
+        
 
         [HttpGet]
         [Produces(typeof(DepartmentDTO))]
