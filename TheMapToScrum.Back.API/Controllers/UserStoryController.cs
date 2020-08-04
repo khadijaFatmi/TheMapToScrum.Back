@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using TheMapToScrum.Back.DTO;
 using TheMapToScrum.Back.BLL.Interfaces;
 using System;
+using Microsoft.AspNetCore.Cors;
 
 namespace TheMapToScrum.Back.Controllers
 {
+    //[Authorize]    
+    [Produces("application/json")]
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
-    [ApiController]
-    public class UserStoryController : ControllerBase
+    public class UserStoryController : Controller
     {
         //injection dep
         private readonly IUserStoryLogic _logic;
@@ -30,6 +33,8 @@ namespace TheMapToScrum.Back.Controllers
 
         [HttpGet]
         [Produces(typeof(UserStoryContentDTO))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public List<UserStoryContentDTO> Get()
         {
             List<UserStoryContentDTO> retour = new List<UserStoryContentDTO>();
@@ -86,13 +91,13 @@ namespace TheMapToScrum.Back.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
 
-        public ActionResult<bool> Delete(int? id)
+        public ActionResult<bool> Delete(int? Id)
         {
-            if (id.HasValue)
+            if (Id.HasValue)
             {
                 try
                 {
-                    bool resultat = _logic.Delete((int)id);
+                    bool resultat = _logic.Delete((int)Id);
                     return resultat;
                 }
                 catch (Exception ex)

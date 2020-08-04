@@ -17,14 +17,14 @@ namespace TheMapToScrum.Back.BLL
        
         public BusinessManagerDTO Create(BusinessManagerDTO objet)
         {
-            BusinessManager entite = MapBusinessManager.MapToEntity(objet);
+            BusinessManager entite = MapBusinessManager.ToEntity(objet);
             BusinessManager resultat = _repo.Create(entite);
             return objet;
         }
 
         public BusinessManagerDTO Update(BusinessManagerDTO objet)
         {
-            BusinessManager entite = MapBusinessManager.MapToEntity(objet);
+            BusinessManager entite = MapBusinessManager.ToEntity(objet);
             BusinessManager resultat = _repo.Update(entite);
             BusinessManagerDTO retour = MapBusinessManagerDTO.ToDto(resultat);
             return retour;
@@ -47,17 +47,17 @@ namespace TheMapToScrum.Back.BLL
 
         }
 
-        public BusinessManagerDTO GetById(int id)
+        public BusinessManagerDTO GetById(int Id)
         {
             BusinessManagerDTO retour = new BusinessManagerDTO();
-            BusinessManager objet = _repo.Get(id);
+            BusinessManager objet = _repo.Get(Id);
             retour = MapBusinessManagerDTO.ToDto(objet);
             return retour;
         }
 
-        public bool Delete(int id)
+        public bool Delete(int Id)
         {
-            return _repo.Delete(id);
+            return _repo.Delete(Id);
         }
     }
 }

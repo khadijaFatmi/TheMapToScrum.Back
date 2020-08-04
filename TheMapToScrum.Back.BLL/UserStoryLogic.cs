@@ -18,7 +18,7 @@ namespace TheMapToScrum.Back.BLL
         }
         public UserStoryContentDTO Create(UserStoryContentDTO objet)
         {
-            UserStoryContent entite = MapUserStory.MapToEntity(objet);
+            UserStoryContent entite = MapUserStory.ToEntity(objet);
             UserStoryContent resultat = _repo.Create(entite);
 
             objet = MapUserStoryContentDTO.ToDto(resultat);
@@ -27,7 +27,7 @@ namespace TheMapToScrum.Back.BLL
 
         public UserStoryContentDTO Update(UserStoryContentDTO objet)
         {
-            UserStoryContent entity = MapUserStory.MapToEntity(objet);
+            UserStoryContent entity = MapUserStory.ToEntity(objet);
             UserStoryContent resultat = _repo.Update(entity);
             UserStoryContentDTO retour = MapUserStoryContentDTO.ToDto(resultat);
             return retour;

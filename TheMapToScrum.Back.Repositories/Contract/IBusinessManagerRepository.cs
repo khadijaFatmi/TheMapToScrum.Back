@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.Repositories.Contract
 {
     public interface IBusinessManagerRepository
     {
-        BusinessManager Get(int id);
+        BusinessManager Get(int Id);
 
 
 

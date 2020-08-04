@@ -5,7 +5,7 @@ using System.Linq;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
-namespace TheMapToScrum.Back.BLL.Mapping.ToDto
+namespace TheMapToScrum.Back.BLL.Mapping
 {
     internal static class MapTeamDTO
     {

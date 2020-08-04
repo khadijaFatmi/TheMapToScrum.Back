@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TheMapToScrum.Back.BLL.Interfaces;
@@ -7,10 +8,11 @@ using TheMapToScrum.Back.DTO;
 namespace TheMapToScrum.Back.Controllers
 {
 
+    //[Authorize]    
+    [Produces("application/json")]
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
-        [Produces("application/json")]
-        [ApiController]
-        public class BusinessManagerController : Controller
+    public class BusinessManagerController : Controller
         {
             //injections dependances
             private readonly IBusinessManagerLogic _logic;

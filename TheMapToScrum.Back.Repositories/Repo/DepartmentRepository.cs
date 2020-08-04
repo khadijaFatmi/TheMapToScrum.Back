@@ -24,10 +24,10 @@ namespace TheMapToScrum.Back.Repositories.Repo
             return objet;
         }
 
-        public Department Get(int id)
+        public Department Get(int Id)
         {
             return _context.Department
-                .Where(x => x.Id == id).FirstOrDefault();
+                .Where(x => x.Id == Id).FirstOrDefault();
 
         }
 

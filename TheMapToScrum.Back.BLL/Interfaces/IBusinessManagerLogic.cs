@@ -12,8 +12,8 @@ namespace TheMapToScrum.Back.BLL.Interfaces
         BusinessManagerDTO Create(BusinessManagerDTO objet);
 
         BusinessManagerDTO Update(BusinessManagerDTO objet);
-        bool Delete(int id);
-        BusinessManagerDTO GetById(int id);
+        bool Delete(int Id);
+        BusinessManagerDTO GetById(int Id);
 
 
     }

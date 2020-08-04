@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TheMapToScrum.Back.BLL.Interfaces;
@@ -6,11 +7,10 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.Controllers
 {
-    //decorateurs
-    //[EnableCors("CorsPolicy")]
-    [Route("api/[controller]")]
+    //[Authorize]    
     [Produces("application/json")]
-    [ApiController]
+    [EnableCors("CorsPolicy")]
+    [Route("api/[controller]")]
     public class ProjectController : Controller
     {
         //injections dependances

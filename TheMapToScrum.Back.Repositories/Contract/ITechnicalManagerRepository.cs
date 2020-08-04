@@ -6,7 +6,7 @@ namespace TheMapToScrum.Back.Repositories.Contract
 {
     public interface ITechnicalManagerRepository
     {
-        TechnicalManager Get(int id);
+        TechnicalManager Get(int Id);
 
         List<TechnicalManager> GetAll();
 

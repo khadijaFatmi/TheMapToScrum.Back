@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using TheMapToScrum.Back.DAL.Entities;
+﻿using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
@@ -7,7 +6,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
     internal static class MapUserStory
     {
 
-        internal static UserStoryContent MapToEntity(UserStoryContentDTO objet)
+        internal static UserStoryContent ToEntity(UserStoryContentDTO objet)
         {
             UserStoryContent retour = new UserStoryContent();
             

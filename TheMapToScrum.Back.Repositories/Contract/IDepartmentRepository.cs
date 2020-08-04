@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.Repositories.Contract
 {
     public interface IDepartmentRepository
     {
-        Department Get(int id);
+        Department Get(int Id);
 
         List<Department> GetAll();
 
@@ -15,7 +15,7 @@ namespace TheMapToScrum.Back.Repositories.Contract
 
         Department Update(Department objet);
 
-        bool Delete(int id);
+        bool Delete(int Id);
 
     }
 }

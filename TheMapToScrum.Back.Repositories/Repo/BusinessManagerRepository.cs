@@ -23,10 +23,10 @@ namespace TheMapToScrum.Back.Repositories.Repo
             return objet;
         }
 
-        public BusinessManager Get(int id)
+        public BusinessManager Get(int Id)
         {
             return _context.BusinessManager
-            .Where(x => x.Id == id).FirstOrDefault();
+            .Where(x => x.Id == Id).FirstOrDefault();
         }
 
         public List<BusinessManager> GetAll()

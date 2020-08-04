@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
 {
     internal static class MapDepartment
     {
-        internal static Department MapToEntity(DepartmentDTO objet)
+        internal static Department ToEntity(DepartmentDTO objet)
         {
             Department retour = new Department();
             retour.Id = objet.Id;

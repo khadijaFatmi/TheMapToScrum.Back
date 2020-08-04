@@ -44,11 +44,11 @@ namespace TheMapToScrum.Back.Repositories.Repo
             return resultat;
         }
 
-        public Project Get(int id)
+        public Project Get(int Id)
         {
 
             return _context.Project
-                .Where(x => x.Id == id).FirstOrDefault();
+                .Where(x => x.Id == Id).FirstOrDefault();
         }
 
         public List<Project> GetAll()

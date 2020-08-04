@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
 {
     internal static class MapDeveloper
     {
-        internal static Developer MapToEntity(DeveloperDTO objet)
+        internal static Developer ToEntity(DeveloperDTO objet)
         {
             Developer retour = new Developer();
             retour.Id = objet.Id;

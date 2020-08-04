@@ -14,7 +14,7 @@ namespace TheMapToScrum.Back.BLL.Interfaces
         UserStoryContentDTO Create(UserStoryContentDTO objet);
 
         UserStoryContentDTO Update(UserStoryContentDTO objet);
-        bool Delete(int id);
-        UserStoryContentDTO GetById(int id);
+        bool Delete(int Id);
+        UserStoryContentDTO GetById(int Id);
     }
 }

@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
 {
     internal static class MapProject
     {
-        internal static Project MapToEntity(ProjectDTO objet)
+        internal static Project ToEntity(ProjectDTO objet)
         {
             Project retour = new Project();
             retour.Id = objet.Id;

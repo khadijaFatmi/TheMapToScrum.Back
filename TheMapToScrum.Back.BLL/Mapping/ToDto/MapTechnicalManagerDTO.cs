@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
-using System.Linq;
-using System;
 
-namespace TheMapToScrum.Back.BLL.Mapping.ToDto
+namespace TheMapToScrum.Back.BLL.Mapping
 {
     internal static class MapTechnicalManagerDTO
     {

@@ -9,13 +9,13 @@ namespace TheMapToScrum.Back.BLL.Interfaces
     {
 
 
-        List<TeamDTO> list();
-        List<TeamDTO> listActive();
+        List<TeamDTO> List();
+        List<TeamDTO> ListActive();
 
         TeamDTO Create(TeamDTO objet);
 
         TeamDTO Update(TeamDTO objet);
-        bool Delete(int id);
-        TeamDTO GetById(int id);
+        bool Delete(int Id);
+        TeamDTO GetById(int Id);
     }
 }

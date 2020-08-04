@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using TheMapToScrum.Back.BLL.Interfaces;
 using TheMapToScrum.Back.BLL.Mapping;
-using TheMapToScrum.Back.BLL.Mapping.ToDto;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 using TheMapToScrum.Back.Repositories.Contract;
@@ -16,7 +13,7 @@ namespace TheMapToScrum.Back.BLL
     {
         private readonly ITechnicalManagerRepository _repo;
 
-        public TechnicalManagerLogic(TechnicalManagerRepository repo)
+        public TechnicalManagerLogic(ITechnicalManagerRepository repo)
         {
             _repo = repo;
         }

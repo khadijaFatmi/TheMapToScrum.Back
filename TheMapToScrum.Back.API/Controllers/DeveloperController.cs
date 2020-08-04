@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TheMapToScrum.Back.BLL.Interfaces;
@@ -7,11 +8,10 @@ using TheMapToScrum.Back.DTO;
 namespace UserStoryWebAPI2.Controllers
 {
 
-    [Route("api/[controller]")]
+    //[Authorize]    
     [Produces("application/json")]
-    [ApiController]
-
-
+    [EnableCors("CorsPolicy")]
+    [Route("api/[controller]")]
     public class DeveloperController : Controller
     {
         private readonly IDeveloperLogic _logic;

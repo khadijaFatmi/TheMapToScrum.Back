@@ -23,10 +23,10 @@ namespace TheMapToScrum.Back.Repositories.Repo
             return objet;
         }
 
-        public Developer Get(int id)
+        public Developer Get(int Id)
         {
             return _context.Developer
-            .Where(x => x.Id == id).FirstOrDefault();
+            .Where(x => x.Id == Id).FirstOrDefault();
         }
 
         public List<Developer> GetAll()

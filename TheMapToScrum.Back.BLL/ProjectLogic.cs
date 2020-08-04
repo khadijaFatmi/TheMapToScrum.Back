@@ -19,7 +19,7 @@ namespace TheMapToScrum.Back.BLL
 
         public ProjectDTO Create(ProjectDTO objet)
         {
-            Project entite = MapProject.MapToEntity(objet);
+            Project entite = MapProject.ToEntity(objet);
             Project resultat = _repo.Create(entite);
 
             objet = MapProjectDTO.ToDto(resultat);
@@ -28,7 +28,7 @@ namespace TheMapToScrum.Back.BLL
 
         public ProjectDTO Update(ProjectDTO objet)
         {
-            Project entity = MapProject.MapToEntity(objet);
+            Project entity = MapProject.ToEntity(objet);
             Project resultat = _repo.Update(entity);
             ProjectDTO retour = MapProjectDTO.ToDto(resultat);
             return retour;

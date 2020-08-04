@@ -5,60 +5,60 @@ using TheMapToScrum.Back.DAL;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.Repositories.Contract;
 
-
 namespace TheMapToScrum.Back.Repositories.Repo
 {
-    public class TechnicalManagerRepository : ITechnicalManagerRepository
+    public class TeamRepository : ITeamRepository
     {
         private readonly ApplicationContext _context;
 
-        public TechnicalManagerRepository(ApplicationContext context)
+        public TeamRepository(ApplicationContext context)
         {
             _context = context;
         }
 
-        public TechnicalManager Create(TechnicalManager objet)
+        public Team Create(Team objet)
         {
-            _context.TechnicalManager.Add(objet);
+            _context.Team.Add(objet);
             _context.SaveChanges();
             return objet;
         }
 
-        public TechnicalManager Get(int Id)
+        public Team Get(int Id)
         {
-            return _context.TechnicalManager
+            return _context.Team
             .Where(x => x.Id == Id).FirstOrDefault();
         }
 
-
-        public List<TechnicalManager> GetAll()
+        public List<Team> GetAll()
         {
-            return _context.TechnicalManager
-                .OrderByDescending(x => x.FirstName)
+            return _context.Team
+                .OrderByDescending(x => x.Label)
                 .ToList();
         }
 
-        public List<TechnicalManager> GetAllActive()
+        public List<Team> GetAllActive()
         {
-            return _context.TechnicalManager
-                .OrderByDescending(x => x.FirstName)
+            return _context.Team
+                .OrderByDescending(x => x.Label)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
 
-        public TechnicalManager Update(TechnicalManager entity)
+        public Team Update(Team entity)
         {
             _context.Update(entity);
             _context.SaveChanges();
             return entity;
+
         }
 
-        public bool Delete(int Id) 
+
+        public bool Delete(int Id)
         {
             bool resultat = false;
             try
             {
-                TechnicalManager entite = _context.TechnicalManager.Where(x => x.Id == Id).First();
+                Team entite = _context.Team.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
                 entite.DateModification = DateTime.Now;
                 _context.Update(entite);
@@ -70,6 +70,8 @@ namespace TheMapToScrum.Back.Repositories.Repo
             }
             return resultat;
         }
+
+
 
     }
 }

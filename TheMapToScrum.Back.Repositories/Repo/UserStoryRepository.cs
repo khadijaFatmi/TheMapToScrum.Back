@@ -43,11 +43,11 @@ namespace TheMapToScrum.Back.Repositories.Repo
             return resultat;
         }
 
-        public UserStoryContent Get(int id)
+        public UserStoryContent Get(int Id)
         {
 
             return _context.UserStoryContent
-                .Where(x => x.Id == id).FirstOrDefault();
+                .Where(x => x.Id == Id).FirstOrDefault();
         }
 
         public List<UserStoryContent> GetAll()

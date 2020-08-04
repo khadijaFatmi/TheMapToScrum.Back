@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
 {
     internal static class MapBusinessManager
     {
-        internal static BusinessManager MapToEntity(BusinessManagerDTO objet)
+        internal static BusinessManager ToEntity(BusinessManagerDTO objet)
         {
             BusinessManager retour = new BusinessManager();
             retour.Id = objet.Id;

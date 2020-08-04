@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TheMapToScrum.Back.BLL.Mapping;
-using TheMapToScrum.Back.BLL.Mapping.ToDto;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 

@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.Repositories.Contract
 {
     public interface IUserStoryRepository
     {
-        UserStoryContent Get(int id);
+        UserStoryContent Get(int Id);
 
         List<UserStoryContent> GetAll();
 

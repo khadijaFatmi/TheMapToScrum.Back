@@ -5,7 +5,7 @@ namespace TheMapToScrum.Back.Repositories.Contract
 {
     public interface IProjectRepository 
     {
-        Project Get(int id);
+        Project Get(int Id);
 
 
 
