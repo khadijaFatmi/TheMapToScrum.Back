@@ -28,7 +28,7 @@ namespace UserStoryWebAPI2.Controllers
         public List<DeveloperDTO> get()
         {
             List<DeveloperDTO> retour = new List<DeveloperDTO>();
-            retour = _logic.List();
+            retour = _logic.ListActive();
             return retour;
         }
 

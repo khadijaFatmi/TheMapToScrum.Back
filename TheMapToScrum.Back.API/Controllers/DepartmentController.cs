@@ -28,7 +28,7 @@ namespace TheMapToScrum.Back.Controllers
         public List<DepartmentDTO> Get()
         {
             List<DepartmentDTO> retour = new List<DepartmentDTO>();
-            retour = _logic.List();
+            retour = _logic.ListActive();
             return retour;
         }
 
