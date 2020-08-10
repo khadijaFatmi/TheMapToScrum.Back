@@ -32,6 +32,7 @@ namespace TheMapToScrum.Back.API
             //Injections de dépendances
             services.AddDbContext<ApplicationContext>(options =>
             {
+                options.EnableSensitiveDataLogging(true);
                 options.UseSqlServer(strConn);
             });
 

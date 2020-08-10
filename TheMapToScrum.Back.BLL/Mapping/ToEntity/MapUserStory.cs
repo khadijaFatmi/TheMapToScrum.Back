@@ -1,4 +1,5 @@
-﻿using TheMapToScrum.Back.DAL.Entities;
+﻿using System;
+using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
@@ -6,26 +7,35 @@ namespace TheMapToScrum.Back.BLL.Mapping
     internal static class MapUserStory
     {
 
-        internal static UserStoryContent ToEntity(UserStoryContentDTO objet)
+        internal static UserStoryContent ToEntity(UserStoryContentDTO objet, bool creation)
         {
             UserStoryContent retour = new UserStoryContent();
-            
-            retour.Id = objet.Id;
-            retour.ProjectId = objet.ProjectId;
-     
-            retour.Label = objet.Label;
-            retour.Version = objet.Version;
-            retour.Role = objet.Role;
-            retour.Function1 = objet.Function1;
-            retour.Function2 = objet.Function2;
-            retour.Notes = objet.Notes;
-            retour.Priority = objet.Priority;
-            retour.StoryPoints = objet.StoryPoints;
-
-            retour.EpicStory = objet.EpicStory;
-            retour.IsDeleted = objet.IsDeleted;
-            retour.DateCreation = objet.DateCreation;
-            retour.DateModification = objet.DateModification;
+            if (objet != null)
+            {
+                retour.ProjectId = objet.ProjectId;
+                retour.Label = objet.Label;
+                retour.Version = objet.Version;
+                retour.Role = objet.Role;
+                retour.Function1 = objet.Function1;
+                retour.Function2 = objet.Function2;
+                retour.Notes = objet.Notes;
+                retour.Priority = objet.Priority;
+                retour.StoryPoints = objet.StoryPoints;
+                retour.EpicStory = objet.EpicStory;
+                if (creation)
+                {
+                    retour.IsDeleted = false;
+                    retour.DateCreation = DateTime.UtcNow;
+                    retour.DateModification = objet.DateCreation;
+                }
+                else
+                {
+                    retour.Id = objet.Id;
+                    retour.IsDeleted = objet.IsDeleted;
+                    retour.DateCreation = objet.DateCreation;
+                    retour.DateModification = DateTime.UtcNow;                    
+                }               
+            }
             return retour;
         }
     }

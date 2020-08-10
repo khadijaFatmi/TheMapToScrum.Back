@@ -32,7 +32,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
                 // select * from
                 UserStoryContent entite = _context.UserStoryContent.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
-                entite.DateModification = DateTime.Now;
+                entite.DateModification = DateTime.UtcNow;
                 _context.Update(entite);
                 _context.SaveChanges();
                 resultat = true;                
@@ -52,7 +52,8 @@ namespace TheMapToScrum.Back.Repositories.Repo
 
         public List<UserStoryContent> GetAll()
         {          
-            return _context.UserStoryContent.Include(p => p.Project)
+            return _context.UserStoryContent
+                //.Include(p => p.Project)
                 .OrderByDescending(x => x.Label)
                 .ToList();
 
@@ -60,9 +61,10 @@ namespace TheMapToScrum.Back.Repositories.Repo
 
         public List<UserStoryContent> GetAllActive()
         {            
-            return _context.UserStoryContent.Include(p => p.Project)
-                .OrderByDescending(x => x.Label)
-                .Where(x => !x.IsDeleted)
+            return _context.UserStoryContent
+                //.Include(p => p.Project)
+                //.OrderByDescending(x => x.Label)
+                //.Where(x => !x.IsDeleted)
                 .ToList();
         }
 

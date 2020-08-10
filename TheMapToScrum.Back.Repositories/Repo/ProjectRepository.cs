@@ -33,7 +33,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
             {
                 Project entite = _context.Project.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
-                entite.DateModification = DateTime.Now;
+                entite.DateModification = DateTime.UtcNow;
                 _context.Update(entite);
                 _context.SaveChanges();
                 resultat = true;
@@ -56,7 +56,10 @@ namespace TheMapToScrum.Back.Repositories.Repo
             //proche bdd 
             return _context.Project
                 .Include(d => d.Department)
-                .OrderByDescending(x => x.Label)
+                .Include(t => t.Team)
+                .Include(tm => tm.TechnicalManager)
+                .Include(bm => bm.BusinessManager)
+                .OrderBy(x => x.Label)
                 .ToList();
 
         }
@@ -64,7 +67,11 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<Project> GetAllActive()
         {
             return _context.Project
-                .OrderByDescending(x => x.Label)
+                .Include(d => d.Department)
+                .Include(t => t.Team)
+                .Include(tm => tm.TechnicalManager)
+                .Include(bm => bm.BusinessManager)
+                .OrderBy(x => x.Label)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }

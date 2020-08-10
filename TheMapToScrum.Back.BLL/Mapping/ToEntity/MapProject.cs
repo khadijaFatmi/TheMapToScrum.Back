@@ -1,20 +1,36 @@
-﻿using TheMapToScrum.Back.DAL.Entities;
+﻿using System;
+using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
 {
     internal static class MapProject
     {
-        internal static Project ToEntity(ProjectDTO objet)
+        internal static Project ToEntity(ProjectDTO objet, bool creation)
         {
             Project retour = new Project();
-            retour.Id = objet.Id;
-            retour.Label = objet.Label;
-            retour.BusinessManagerId = objet.BusinessManagerId;
-            retour.DateCreation = objet.DateCreation;
-            retour.DateModification = objet.DateModification;
-            retour.IsDeleted = objet.IsDeleted;
-            
+            if (objet != null)
+            {
+                retour.Label = objet.Label;
+                retour.BusinessManagerId = objet.BusinessManagerId;
+                retour.TeamId = objet.TeamId;
+                retour.TechnicalManagerId = objet.TechnicalManagerId;
+                retour.DepartmentId = objet.DepartmentId;
+
+                if (creation)
+                {
+                    retour.DateCreation = DateTime.UtcNow;
+                    retour.DateModification = DateTime.UtcNow;
+                    retour.IsDeleted = false;
+                }
+                else
+                {
+                    retour.Id = objet.Id;
+                    retour.DateCreation = objet.DateCreation;
+                    retour.DateModification = DateTime.UtcNow;
+                    retour.IsDeleted = objet.IsDeleted;
+                }
+            }
             return retour;
         }
     }

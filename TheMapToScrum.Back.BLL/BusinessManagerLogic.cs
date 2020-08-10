@@ -17,14 +17,15 @@ namespace TheMapToScrum.Back.BLL
        
         public BusinessManagerDTO Create(BusinessManagerDTO objet)
         {
-            BusinessManager entite = MapBusinessManager.ToEntity(objet);
+            BusinessManager entite = MapBusinessManager.ToEntity(objet, true);
             BusinessManager resultat = _repo.Create(entite);
-            return objet;
+            BusinessManagerDTO retour = MapBusinessManagerDTO.ToDto(resultat);
+            return retour;
         }
 
         public BusinessManagerDTO Update(BusinessManagerDTO objet)
         {
-            BusinessManager entite = MapBusinessManager.ToEntity(objet);
+            BusinessManager entite = MapBusinessManager.ToEntity(objet, false);
             BusinessManager resultat = _repo.Update(entite);
             BusinessManagerDTO retour = MapBusinessManagerDTO.ToDto(resultat);
             return retour;

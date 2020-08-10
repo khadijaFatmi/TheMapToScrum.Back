@@ -18,14 +18,16 @@ namespace TheMapToScrum.Back.BLL
 
         public DepartmentDTO Create(DepartmentDTO objet)
         {
-            Department entite = MapDepartment.ToEntity(objet);
+            Department entite = MapDepartment.ToEntity(objet, true);
             Department resultat = _repo.Create(entite);
+            objet = MapDepartmentDTO.ToDto(resultat);
+           
             return objet;
         }
 
         public DepartmentDTO Update(DepartmentDTO objet)
         {
-            Department entite = MapDepartment.ToEntity(objet);
+            Department entite = MapDepartment.ToEntity(objet, false);
             Department resultat = _repo.Update(entite);
             DepartmentDTO retour = MapDepartmentDTO.ToDto(resultat);
             return retour;

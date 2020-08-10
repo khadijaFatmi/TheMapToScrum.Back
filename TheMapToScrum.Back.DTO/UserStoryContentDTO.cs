@@ -10,7 +10,7 @@ namespace TheMapToScrum.Back.DTO
         [Required]
         public string Version { get; set; }
 
-        
+        [Required]
         public string Label { get; set; }
         public string Role { get; set; }
         public string Function1 { get; set; }

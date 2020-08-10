@@ -23,7 +23,6 @@ namespace TheMapToScrum.Back.Controllers
         }
 
         [HttpGet("{id}")]
-
         public UserStoryContentDTO GetById(int id)
         {
             UserStoryContentDTO retour = new UserStoryContentDTO();
@@ -43,8 +42,7 @@ namespace TheMapToScrum.Back.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-      
+        [ProducesResponseType(StatusCodes.Status201Created)]      
         public ActionResult<UserStoryContentDTO> Post([FromBody] UserStoryContentDTO objet)
         {
             if(ModelState.IsValid)
@@ -67,10 +65,10 @@ namespace TheMapToScrum.Back.Controllers
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
-
+        //modification d'entité avec fourniture de l'Id obligatoire
         public ActionResult<UserStoryContentDTO> Put([FromBody] UserStoryContentDTO objet)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && objet.Id.HasValue)
             {
                 try
                 {
@@ -88,9 +86,9 @@ namespace TheMapToScrum.Back.Controllers
             }
         }
 
+        //id in url
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-
         public ActionResult<bool> Delete(int? Id)
         {
             if (Id.HasValue)

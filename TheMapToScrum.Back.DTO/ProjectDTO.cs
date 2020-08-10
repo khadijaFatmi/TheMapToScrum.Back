@@ -13,7 +13,6 @@
         public TechnicalManagerDTO TechnicalManager { get; set; }
         public BusinessManagerDTO BusinessManager { get; set; }
         public TeamDTO Team { get; set; }
-        public DeveloperDTO Developer { get; set; }
-
+        
     }
 }

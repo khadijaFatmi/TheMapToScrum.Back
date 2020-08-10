@@ -14,8 +14,11 @@ namespace TheMapToScrum.Back.BLL.Mapping
             {
                 retour.Id = objet.Id;
                 retour.Label = objet.Label;
+                retour.DateCreation = objet.DateCreation;
+                retour.DateModification = objet.DateModification;
+                retour.IsDeleted = objet.IsDeleted;
             }
-                return retour;
+            return retour;
         }
 
 
@@ -29,7 +32,6 @@ namespace TheMapToScrum.Back.BLL.Mapping
                 DateCreation = x.DateCreation,
                 DateModification = x.DateModification,
                 IsDeleted = x.IsDeleted
-
             })
         .ToList();
             return retour;

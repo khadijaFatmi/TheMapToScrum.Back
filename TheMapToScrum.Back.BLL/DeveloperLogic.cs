@@ -40,7 +40,7 @@ namespace TheMapToScrum.Back.BLL
 
         public DeveloperDTO Create(DeveloperDTO objet)
         {
-            Developer entite = MapDeveloper.ToEntity(objet);
+            Developer entite = MapDeveloper.ToEntity(objet, true);
             Developer resultat = _repo.Create(entite);
 
             objet = MapDeveloperDTO.ToDto(resultat);
@@ -49,7 +49,7 @@ namespace TheMapToScrum.Back.BLL
 
         public DeveloperDTO Update(DeveloperDTO objet)
         {
-            Developer entity = MapDeveloper.ToEntity(objet);
+            Developer entity = MapDeveloper.ToEntity(objet, false);
             Developer resultat = _repo.Update(entity);
             DeveloperDTO retour = MapDeveloperDTO.ToDto(resultat);
             return retour;

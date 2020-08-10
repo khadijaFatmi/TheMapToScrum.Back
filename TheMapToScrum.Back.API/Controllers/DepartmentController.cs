@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using TheMapToScrum.Back.BLL.Interfaces;
 using TheMapToScrum.Back.DTO;
@@ -31,6 +32,16 @@ namespace TheMapToScrum.Back.Controllers
             return retour;
         }
 
+
+
+        [HttpGet("{id}")]
+        public DepartmentDTO GetById(int id)
+        {
+            DepartmentDTO retour = new DepartmentDTO();
+            retour = _logic.GetById(id);
+            return retour;
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
 
@@ -54,12 +65,13 @@ namespace TheMapToScrum.Back.Controllers
             }
         }
 
+
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
-
+        //modification d'entité avec fourniture de l'Id obligatoire
         public ActionResult<DepartmentDTO> Put([FromBody] DepartmentDTO objet)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && objet.Id.HasValue)
             {
                 try
                 {
@@ -77,7 +89,27 @@ namespace TheMapToScrum.Back.Controllers
             }
         }
 
-
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<bool> Delete(int? Id)
+        {
+            if (Id.HasValue)
+            {
+                try
+                {
+                    bool resultat = _logic.Delete((int)Id);
+                    return resultat;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return BadRequest("id invalide");
+            }
+        }
 
     }
 }

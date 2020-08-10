@@ -38,7 +38,7 @@ namespace TheMapToScrum.Back.BLL
 
         public TechnicalManagerDTO Create(TechnicalManagerDTO objet)
         {
-            TechnicalManager entite = MapTechnicalManager.ToEntity(objet);
+            TechnicalManager entite = MapTechnicalManager.ToEntity(objet, true);
             TechnicalManager resultat = _repo.Create(entite);
 
             objet = MapTechnicalManagerDTO.ToDto(resultat);
@@ -47,7 +47,7 @@ namespace TheMapToScrum.Back.BLL
 
         public TechnicalManagerDTO Update(TechnicalManagerDTO objet)
         {
-            TechnicalManager entity = MapTechnicalManager.ToEntity(objet);
+            TechnicalManager entity = MapTechnicalManager.ToEntity(objet, false);
             TechnicalManager resultat = _repo.Update(entity);
             TechnicalManagerDTO retour = MapTechnicalManagerDTO.ToDto(resultat);
             return retour;

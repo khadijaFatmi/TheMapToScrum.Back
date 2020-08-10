@@ -12,7 +12,5 @@ namespace TheMapToScrum.Back.DAL.Entities
         public DateTime DateModification { get; set; }
 
         public DateTime DateCreation { get; set; }
-
-
     }
 }

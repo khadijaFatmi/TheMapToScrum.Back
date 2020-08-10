@@ -17,14 +17,15 @@ namespace TheMapToScrum.Back.BLL
 
         public TeamDTO Create(TeamDTO objet)
         {
-            Team entite = MapTeam.ToEntity(objet);
+            Team entite = MapTeam.ToEntity(objet, true);
             Team resultat = _repo.Create(entite);
-            return objet;
+            TeamDTO retour = MapTeamDTO.ToDto(resultat);
+            return retour;
         }
 
         public TeamDTO Update(TeamDTO objet)
         {
-            Team entite = MapTeam.ToEntity(objet);
+            Team entite = MapTeam.ToEntity(objet, false);
             Team resultat = _repo.Update(entite);
             TeamDTO retour = MapTeamDTO.ToDto(resultat);
             return retour;

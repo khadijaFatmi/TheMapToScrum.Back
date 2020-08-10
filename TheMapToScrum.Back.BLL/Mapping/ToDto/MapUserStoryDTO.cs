@@ -14,8 +14,7 @@ namespace TheMapToScrum.Back.BLL
             if (objet != null)
             {
                 retour.Id = objet.Id;
-                retour.ProjectId = objet.ProjectId;
-               
+                retour.ProjectId = objet.ProjectId;               
                 retour.Label = objet.Label;
                 retour.Version = objet.Version;
                 retour.Role = objet.Role;
@@ -27,7 +26,7 @@ namespace TheMapToScrum.Back.BLL
                 retour.EpicStory = objet.EpicStory;
                 retour.IsDeleted = objet.IsDeleted;
                 retour.DateCreation = objet.DateCreation;
-                retour.DateModification = DateTime.Now;
+                retour.DateModification = DateTime.UtcNow;
             }
 
             return retour;

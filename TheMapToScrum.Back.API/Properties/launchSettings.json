@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/userstory",
+      "launchUrl": "api/developer",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "TheMapToScrum.Back.API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/userstory",
+      "launchUrl": "api/project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

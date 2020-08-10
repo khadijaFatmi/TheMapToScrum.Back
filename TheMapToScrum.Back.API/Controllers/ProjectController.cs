@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using TheMapToScrum.Back.BLL.Interfaces;
 using TheMapToScrum.Back.DTO;
@@ -19,7 +20,6 @@ namespace TheMapToScrum.Back.Controllers
         public ProjectController(IProjectLogic logic)
         {
             _logic = logic;
-
         }
 
         [HttpGet]
@@ -31,9 +31,16 @@ namespace TheMapToScrum.Back.Controllers
             return retour;
         }
 
+        [HttpGet("{id}")]
+        public ProjectDTO GetById(int id)
+        {
+            ProjectDTO retour = new ProjectDTO();
+            retour = _logic.GetById(id);
+            return retour;
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-
         public ActionResult<ProjectDTO> Post([FromBody] ProjectDTO objet)
         {
             if (ModelState.IsValid)
@@ -43,7 +50,7 @@ namespace TheMapToScrum.Back.Controllers
                     ProjectDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
-                catch
+                catch(Exception ex)
                 {
                     return null;
                 }
@@ -56,10 +63,11 @@ namespace TheMapToScrum.Back.Controllers
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
-
+        //modification d'entité avec fourniture de l'Id obligatoire
         public ActionResult<ProjectDTO> Put([FromBody] ProjectDTO objet)
         {
-            if (ModelState.IsValid)
+            //PUT doit contenir  Id du projet et aussi etre valide
+            if (ModelState.IsValid && objet.Id.HasValue)
             {
                 try
                 {
@@ -77,5 +85,27 @@ namespace TheMapToScrum.Back.Controllers
             }
         }
 
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<bool> Delete(int? Id)
+        {
+            if (Id.HasValue)
+            {
+                try
+                {
+                    bool resultat = _logic.Delete((int)Id);
+                    return resultat;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return BadRequest("id invalide");
+            }
+        }
     }
 }

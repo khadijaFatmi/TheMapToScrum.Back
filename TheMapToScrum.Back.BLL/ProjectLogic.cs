@@ -19,16 +19,26 @@ namespace TheMapToScrum.Back.BLL
 
         public ProjectDTO Create(ProjectDTO objet)
         {
-            Project entite = MapProject.ToEntity(objet);
+            Project entite = MapProject.ToEntity(objet, true);
             Project resultat = _repo.Create(entite);
 
             objet = MapProjectDTO.ToDto(resultat);
             return objet;
         }
 
+
+        public ProjectDTO GetById(int Id)
+        {
+            ProjectDTO retour = new ProjectDTO();
+            Project objet = _repo.Get(Id);
+            retour = MapProjectDTO.ToDto(objet);
+            return retour;
+
+        }
+
         public ProjectDTO Update(ProjectDTO objet)
         {
-            Project entity = MapProject.ToEntity(objet);
+            Project entity = MapProject.ToEntity(objet, false);
             Project resultat = _repo.Update(entity);
             ProjectDTO retour = MapProjectDTO.ToDto(resultat);
             return retour;
@@ -40,15 +50,6 @@ namespace TheMapToScrum.Back.BLL
 
             bool resultat = _repo.Delete(Id);
             return resultat;
-        }
-
-        public ProjectDTO GetById(int Id)
-        {
-            ProjectDTO retour = new ProjectDTO();
-            Project objet = _repo.Get(Id);
-            retour = MapProjectDTO.ToDto(objet);
-            return retour;
-
         }
 
         public List<ProjectDTO> List()

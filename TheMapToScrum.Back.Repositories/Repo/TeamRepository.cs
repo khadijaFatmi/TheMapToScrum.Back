@@ -60,7 +60,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
             {
                 Team entite = _context.Team.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
-                entite.DateModification = DateTime.Now;
+                entite.DateModification = DateTime.UtcNow;
                 _context.Update(entite);
                 _context.SaveChanges();
                 resultat = true;

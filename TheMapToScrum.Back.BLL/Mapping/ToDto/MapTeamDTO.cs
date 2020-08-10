@@ -18,7 +18,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
                 retour.Label = objet.Label;               
                 retour.IsDeleted = objet.IsDeleted;
                 retour.DateCreation = objet.DateCreation;
-                retour.DateModification = DateTime.Now;
+                retour.DateModification = objet.DateModification;
             }
 
             return retour;
