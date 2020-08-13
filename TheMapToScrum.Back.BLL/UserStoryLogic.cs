@@ -16,20 +16,20 @@ namespace TheMapToScrum.Back.BLL
         {
             _repo = repo;
         }
-        public UserStoryContentDTO Create(UserStoryContentDTO objet)
+        public UserStoryDTO Create(UserStoryDTO objet)
         {
-            UserStoryContent entite = MapUserStory.ToEntity(objet, true);
-            UserStoryContent resultat = _repo.Create(entite);
+            UserStory entite = MapUserStory.ToEntity(objet, true);
+            UserStory resultat = _repo.Create(entite);
 
             objet = MapUserStoryContentDTO.ToDto(resultat);
             return objet;
         }
 
-        public UserStoryContentDTO Update(UserStoryContentDTO objet)
+        public UserStoryDTO Update(UserStoryDTO objet)
         {
-            UserStoryContent entity = MapUserStory.ToEntity(objet, false);
-            UserStoryContent resultat = _repo.Update(entity);
-            UserStoryContentDTO retour = MapUserStoryContentDTO.ToDto(resultat);
+            UserStory entity = MapUserStory.ToEntity(objet, false);
+            UserStory resultat = _repo.Update(entity);
+            UserStoryDTO retour = MapUserStoryContentDTO.ToDto(resultat);
             return retour;
         }
 
@@ -40,26 +40,26 @@ namespace TheMapToScrum.Back.BLL
             return resultat;
         }
 
-        public UserStoryContentDTO GetById(int Id)
+        public UserStoryDTO GetById(int Id)
         {
-            UserStoryContentDTO retour = new UserStoryContentDTO();
-            UserStoryContent objet = _repo.Get(Id);
+            UserStoryDTO retour = new UserStoryDTO();
+            UserStory objet = _repo.Get(Id);
             retour = MapUserStoryContentDTO.ToDto(objet);
             return retour;
 
         }
 
-        public List<UserStoryContentDTO> list()
+        public List<UserStoryDTO> list()
         {
-            List<UserStoryContentDTO> retour = new List<UserStoryContentDTO>();
-            List<UserStoryContent> liste = _repo.GetAll();
+            List<UserStoryDTO> retour = new List<UserStoryDTO>();
+            List<UserStory> liste = _repo.GetAll();
             retour = MapUserStoryContentDTO.ToDto(liste);
             return retour;
         }
-        public List<UserStoryContentDTO> listActive()
+        public List<UserStoryDTO> listActive()
         {
-            List<UserStoryContentDTO> retour = new List<UserStoryContentDTO>();
-            List<UserStoryContent> liste = _repo.GetAllActive();
+            List<UserStoryDTO> retour = new List<UserStoryDTO>();
+            List<UserStory> liste = _repo.GetAllActive();
             retour = MapUserStoryContentDTO.ToDto(liste);
             return retour;
         }

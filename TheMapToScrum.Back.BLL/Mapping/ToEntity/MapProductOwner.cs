@@ -1,34 +1,34 @@
-﻿
-
-using System;
+﻿using System;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
 {
-    internal static class MapTechnicalManager
+    internal static class MapProductOwner
     {
-        internal static TechnicalManager ToEntity(TechnicalManagerDTO objet, bool creation)
+        internal static ProductOwner ToEntity(ProductOwnerDTO objet, bool creation)
         {
-            TechnicalManager retour = new TechnicalManager();
+            ProductOwner retour = new ProductOwner();
             if (objet != null)
-            {                
+            {
+                
                 retour.LastName = objet.LastName;
                 retour.FirstName = objet.FirstName;
                 if (creation)
                 {
                     retour.IsDeleted = false;
                     retour.DateCreation = DateTime.UtcNow;
-                    retour.DateModification = objet.DateCreation;
+                    retour.DateModification = DateTime.UtcNow;
                 }
-                else
+                else 
                 {
                     retour.Id = objet.Id;
                     retour.IsDeleted = objet.IsDeleted;
                     retour.DateCreation = objet.DateCreation;
                     retour.DateModification = DateTime.UtcNow;
-                }               
-            }
+                }
+                
+            }            
             return retour;
         }
     }

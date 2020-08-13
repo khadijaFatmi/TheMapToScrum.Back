@@ -8,82 +8,69 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.Controllers
 {
-
     //[Authorize]    
     [Produces("application/json")]
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
-    public class BusinessManagerController : Controller
+    public class ScrumMasterController : Controller
     {
-        //injections dependances
-        private readonly IBusinessManagerLogic _logic;
+        private readonly IScrumMasterLogic _logic;
 
-        public BusinessManagerController(IBusinessManagerLogic logic)
+        public ScrumMasterController(IScrumMasterLogic logic) 
         {
             _logic = logic;
-
         }
 
         [HttpGet]
-        [Produces(typeof(List<BusinessManagerDTO>))]
-        public List<BusinessManagerDTO> get()
+        [Produces(typeof(List<ScrumMasterDTO>))]
+        public List<ScrumMasterDTO> Get()
         {
-            List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
+            List<ScrumMasterDTO> retour = new List<ScrumMasterDTO>();
             retour = _logic.ListActive();
             return retour;
         }
 
-        [HttpGet("All")]
-        [Produces(typeof(List<BusinessManagerDTO>))]
-        public List<BusinessManagerDTO> getAll()
-        {
-            List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
-            retour = _logic.List();
-            return retour;
-        }
-
         [HttpGet("{id}")]
-        public BusinessManagerDTO GetById(int id)
+        public ScrumMasterDTO GetById(int id)
         {
-            BusinessManagerDTO retour = new BusinessManagerDTO();
+            ScrumMasterDTO retour = new ScrumMasterDTO();
             retour = _logic.GetById(id);
             return retour;
         }
 
-
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-
-        public ActionResult<BusinessManagerDTO> Post([FromBody] BusinessManagerDTO objet)
+        public ActionResult<ScrumMasterDTO> Post([FromBody] ScrumMasterDTO objet)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    BusinessManagerDTO resultat = _logic.Create(objet);
+                    ScrumMasterDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
-                catch
+                catch 
                 {
                     return null;
                 }
             }
-            else
+            else 
             {
-                return BadRequest("BusinessManagerDTO invalide");
+                return BadRequest("TechnicalManagerDTO invalide, Is the model Valid???");
             }
         }
 
+        //modification d'entité avec fourniture de l'Id obligatoire
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
-        //modification d'entité avec fourniture de l'Id obligatoire
-        public ActionResult<BusinessManagerDTO> Put([FromBody] BusinessManagerDTO objet)
+
+        public ActionResult<ScrumMasterDTO> Put([FromBody] ScrumMasterDTO objet)
         {
             if (ModelState.IsValid && objet.Id.HasValue)
             {
                 try
                 {
-                    BusinessManagerDTO resultat = _logic.Update(objet);
+                    ScrumMasterDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
                 catch
@@ -93,12 +80,13 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("BusinessManagerDTO invalide");
+                return BadRequest("TechnicalManagerDTO invalide");
             }
         }
 
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+
         public ActionResult<bool> Delete(int? Id)
         {
             if (Id.HasValue)
@@ -120,4 +108,3 @@ namespace TheMapToScrum.Back.Controllers
         }
     }
 }
-

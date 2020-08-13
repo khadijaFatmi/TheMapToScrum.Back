@@ -1,6 +1,6 @@
 ﻿namespace TheMapToScrum.Back.DAL.Entities
 {
-    public class UserStoryContent : EntityBase
+    public class UserStory : EntityBase
     {
         public int ProjectId { get; set; }
         

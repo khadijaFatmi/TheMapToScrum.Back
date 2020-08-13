@@ -7,9 +7,9 @@ namespace TheMapToScrum.Back.BLL.Mapping
     internal static class MapUserStory
     {
 
-        internal static UserStoryContent ToEntity(UserStoryContentDTO objet, bool creation)
+        internal static UserStory ToEntity(UserStoryDTO objet, bool creation)
         {
-            UserStoryContent retour = new UserStoryContent();
+            UserStory retour = new UserStory();
             if (objet != null)
             {
                 retour.ProjectId = objet.ProjectId;

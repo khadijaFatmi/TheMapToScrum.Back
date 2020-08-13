@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TheMapToScrum.Back.DTO
 {
-    public class TechnicalManagerDTO : BaseEntityDTO
+    public class ScrumMasterDTO : BaseEntityDTO
     {
         public string FullName { get; set; }
         public string FirstName { get; set; }

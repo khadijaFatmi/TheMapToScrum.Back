@@ -8,9 +8,9 @@ namespace TheMapToScrum.Back.BLL
 {
     internal static class MapUserStoryContentDTO
     {
-        internal static UserStoryContentDTO ToDto(UserStoryContent objet)
+        internal static UserStoryDTO ToDto(UserStory objet)
         {
-            UserStoryContentDTO retour = new UserStoryContentDTO();
+            UserStoryDTO retour = new UserStoryDTO();
             if (objet != null)
             {
                 retour.Id = objet.Id;
@@ -34,11 +34,11 @@ namespace TheMapToScrum.Back.BLL
         }
 
 
-        internal static List<UserStoryContentDTO> ToDto(List<UserStoryContent> liste)
+        internal static List<UserStoryDTO> ToDto(List<UserStory> liste)
         {
             //récupération de la liste d'entités USContentDTO transformés en entités
-            List<UserStoryContentDTO> retour = new List<UserStoryContentDTO>();
-            retour = liste.Select(x => new UserStoryContentDTO()
+            List<UserStoryDTO> retour = new List<UserStoryDTO>();
+            retour = liste.Select(x => new UserStoryDTO()
             {
                 Id = x.Id,
                 Version = x.Version,

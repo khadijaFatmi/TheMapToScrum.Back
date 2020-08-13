@@ -15,13 +15,13 @@ namespace TheMapToScrum.Back.BLL
             {
                 retour.Id = objet.Id;
                 retour.Label = objet.Label;
-                retour.BusinessManagerId = objet.BusinessManagerId;
+                retour.ProductOwnerId = objet.ProductOwnerId;
                 retour.TeamId = objet.TeamId;
-                retour.TechnicalManagerId = objet.TechnicalManagerId;
+                retour.ScrumMasterId = objet.ScrumMasterId;
                 retour.DepartmentId = objet.DepartmentId;
                 retour.Department = MapDepartmentDTO.ToDto(objet.Department);
-                retour.TechnicalManager = MapTechnicalManagerDTO.ToDto(objet.TechnicalManager);
-                retour.BusinessManager = MapBusinessManagerDTO.ToDto(objet.BusinessManager);
+                retour.ScrumMaster= MapScrumMasterDTO.ToDto(objet.TechnicalManager);
+                retour.ProductOwner = MapProductOwnerDTO.ToDto(objet.ProductOwner);
                 retour.Team = MapTeamDTO.ToDto(objet.Team);                
                 retour.DateCreation = (System.DateTime)objet.DateCreation;
                 retour.DateModification = (System.DateTime)objet.DateModification;               
@@ -40,12 +40,12 @@ namespace TheMapToScrum.Back.BLL
             {
                 Id = x.Id,
                 DepartmentId = x.DepartmentId,
-                BusinessManagerId = x.BusinessManagerId,
+                ProductOwnerId = x.ProductOwnerId,
                 TeamId = x.TeamId,
-                TechnicalManagerId = x.TechnicalManagerId,
+                ScrumMasterId = x.ScrumMasterId,
                 Department = MapDepartmentDTO.ToDto(x.Department),
-                BusinessManager = MapBusinessManagerDTO.ToDto(x.BusinessManager),
-                TechnicalManager = MapTechnicalManagerDTO.ToDto(x.TechnicalManager),
+                ProductOwner = MapProductOwnerDTO.ToDto(x.ProductOwner),
+                ScrumMaster = MapScrumMasterDTO.ToDto(x.TechnicalManager),
                 Team = MapTeamDTO.ToDto(x.Team),
                 DateCreation = (System.DateTime)x.DateCreation,
                 DateModification = (System.DateTime)x.DateModification,

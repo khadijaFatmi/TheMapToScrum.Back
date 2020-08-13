@@ -5,15 +5,15 @@ namespace TheMapToScrum.Back.Repositories.Contract
 {
     public interface IUserStoryRepository
     {
-        UserStoryContent Get(int Id);
+        UserStory Get(int Id);
 
-        List<UserStoryContent> GetAll();
+        List<UserStory> GetAll();
 
-        List<UserStoryContent> GetAllActive();
+        List<UserStory> GetAllActive();
 
-        UserStoryContent Create(UserStoryContent objet);
+        UserStory Create(UserStory objet);
 
-        UserStoryContent Update(UserStoryContent objet);
+        UserStory Update(UserStory objet);
 
         bool Delete(int Id);
     }

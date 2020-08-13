@@ -7,44 +7,44 @@ using TheMapToScrum.Back.Repositories.Contract;
 
 namespace TheMapToScrum.Back.Repositories.Repo
 {
-    public class BusinessManagerRepository : IBusinessManagerRepository
+    public class ProductOwnerRepository : IProductOwnerRepository
     {
         private readonly ApplicationContext _context;
 
-        public BusinessManagerRepository(ApplicationContext context)
+        public ProductOwnerRepository(ApplicationContext context)
         {
             _context = context;
         }
 
-        public BusinessManager Create(BusinessManager objet)
+        public ProductOwner Create(ProductOwner objet)
         {
-            _context.BusinessManager.Add(objet);
+            _context.ProductOwner.Add(objet);
             _context.SaveChanges();
             return objet;
         }
 
-        public BusinessManager Get(int Id)
+        public ProductOwner Get(int Id)
         {
-            return _context.BusinessManager
+            return _context.ProductOwner
             .Where(x => x.Id == Id).FirstOrDefault();
         }
 
-        public List<BusinessManager> GetAll()
+        public List<ProductOwner> GetAll()
         {
-            return _context.BusinessManager
+            return _context.ProductOwner
                 .OrderByDescending(x => x.FirstName)
                 .ToList();
         }
 
-        public List<BusinessManager> GetAllActive()
+        public List<ProductOwner> GetAllActive()
         {
-            return _context.BusinessManager
+            return _context.ProductOwner
                 .OrderByDescending(x => x.FirstName)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
 
-        public BusinessManager Update(BusinessManager entity)
+        public ProductOwner Update(ProductOwner entity)
         {
             _context.Update(entity);
             _context.SaveChanges();
@@ -58,7 +58,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
             bool resultat = false;
             try
             {
-                BusinessManager entite = _context.BusinessManager.Where(x => x.Id == Id).First();
+                ProductOwner entite = _context.ProductOwner.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
                 entite.DateModification = DateTime.UtcNow;
                 _context.Update(entite);

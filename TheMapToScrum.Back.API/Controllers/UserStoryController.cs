@@ -23,33 +23,33 @@ namespace TheMapToScrum.Back.Controllers
         }
 
         [HttpGet("{id}")]
-        public UserStoryContentDTO GetById(int id)
+        public UserStoryDTO GetById(int id)
         {
-            UserStoryContentDTO retour = new UserStoryContentDTO();
+            UserStoryDTO retour = new UserStoryDTO();
             retour = _logic.GetById(id);
             return retour;
         }
 
         [HttpGet]
-        [Produces(typeof(UserStoryContentDTO))]
+        [Produces(typeof(UserStoryDTO))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public List<UserStoryContentDTO> Get()
+        public List<UserStoryDTO> Get()
         {
-            List<UserStoryContentDTO> retour = new List<UserStoryContentDTO>();
+            List<UserStoryDTO> retour = new List<UserStoryDTO>();
             retour = _logic.listActive();
             return retour;
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]      
-        public ActionResult<UserStoryContentDTO> Post([FromBody] UserStoryContentDTO objet)
+        public ActionResult<UserStoryDTO> Post([FromBody] UserStoryDTO objet)
         {
             if(ModelState.IsValid)
             {
                 try
                 {
-                    UserStoryContentDTO resultat = _logic.Create(objet);
+                    UserStoryDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
                 catch 
@@ -59,20 +59,20 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("UserStoryContentDTO invalide");
+                return BadRequest("UserStoryDTO invalide");
             }
         }
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         //modification d'entité avec fourniture de l'Id obligatoire
-        public ActionResult<UserStoryContentDTO> Put([FromBody] UserStoryContentDTO objet)
+        public ActionResult<UserStoryDTO> Put([FromBody] UserStoryDTO objet)
         {
             if (ModelState.IsValid && objet.Id.HasValue)
             {
                 try
                 {
-                    UserStoryContentDTO resultat = _logic.Update(objet);
+                    UserStoryDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
                 catch(Exception ex)
@@ -82,7 +82,7 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("UserStoryContentDTO invalide");
+                return BadRequest("UserStoryDTO invalide");
             }
         }
 

@@ -2,7 +2,7 @@
 
 namespace TheMapToScrum.Back.DTO
 {
-    public class UserStoryContentDTO : BaseEntityDTO
+    public class UserStoryDTO : BaseEntityDTO
     {
         [Required]
         public int ProjectId { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TheMapToScrum.Back.DAL.Entities
 {
-    public class TechnicalManager : EntityBase
+    public class ScrumMaster : EntityBase
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

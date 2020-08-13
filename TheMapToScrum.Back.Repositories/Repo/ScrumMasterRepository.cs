@@ -8,45 +8,45 @@ using TheMapToScrum.Back.Repositories.Contract;
 
 namespace TheMapToScrum.Back.Repositories.Repo
 {
-    public class TechnicalManagerRepository : ITechnicalManagerRepository
+    public class ScrumMasterRepository : IScrumMasterRepository
     {
         private readonly ApplicationContext _context;
 
-        public TechnicalManagerRepository(ApplicationContext context)
+        public ScrumMasterRepository(ApplicationContext context)
         {
             _context = context;
         }
 
-        public TechnicalManager Create(TechnicalManager objet)
+        public ScrumMaster Create(ScrumMaster objet)
         {
-            _context.TechnicalManager.Add(objet);
+            _context.ScrumMaster.Add(objet);
             _context.SaveChanges();
             return objet;
         }
 
-        public TechnicalManager Get(int Id)
+        public ScrumMaster Get(int Id)
         {
-            return _context.TechnicalManager
+            return _context.ScrumMaster
             .Where(x => x.Id == Id).FirstOrDefault();
         }
 
 
-        public List<TechnicalManager> GetAll()
+        public List<ScrumMaster> GetAll()
         {
-            return _context.TechnicalManager
+            return _context.ScrumMaster
                 .OrderByDescending(x => x.FirstName)
                 .ToList();
         }
 
-        public List<TechnicalManager> GetAllActive()
+        public List<ScrumMaster> GetAllActive()
         {
-            return _context.TechnicalManager
+            return _context.ScrumMaster
                 .OrderByDescending(x => x.FirstName)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
 
-        public TechnicalManager Update(TechnicalManager entity)
+        public ScrumMaster Update(ScrumMaster entity)
         {
             _context.Update(entity);
             _context.SaveChanges();
@@ -58,7 +58,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
             bool resultat = false;
             try
             {
-                TechnicalManager entite = _context.TechnicalManager.Where(x => x.Id == Id).First();
+                ScrumMaster entite = _context.ScrumMaster.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
                 entite.DateModification = DateTime.UtcNow;
                 _context.Update(entite);

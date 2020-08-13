@@ -61,7 +61,7 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("UserStoryContentDTO invalide");
+                return BadRequest("UserStoryDTO invalide");
             }
         }
 

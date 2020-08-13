@@ -8,69 +8,59 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.Controllers
 {
+
     //[Authorize]    
     [Produces("application/json")]
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
-    public class TechnicalManagerController : Controller
+    public class ProductOwnerController : Controller
     {
-        private readonly ITechnicalManagerLogic _logic;
+        //injections dependances
+        private readonly IProductOwnerLogic _logic;
 
-        public TechnicalManagerController(ITechnicalManagerLogic logic) 
+        public ProductOwnerController(IProductOwnerLogic logic)
         {
             _logic = logic;
+
         }
 
         [HttpGet]
-        [Produces(typeof(List<TechnicalManagerDTO>))]
-        public List<TechnicalManagerDTO> Get()
+        [Produces(typeof(List<ProductOwnerDTO>))]
+        public List<ProductOwnerDTO> get()
         {
-            List<TechnicalManagerDTO> retour = new List<TechnicalManagerDTO>();
+            List<ProductOwnerDTO> retour = new List<ProductOwnerDTO>();
             retour = _logic.ListActive();
             return retour;
         }
 
-        [HttpGet("{id}")]
-        public TechnicalManagerDTO GetById(int id)
+        [HttpGet("All")]
+        [Produces(typeof(List<ProductOwnerDTO>))]
+        public List<ProductOwnerDTO> getAll()
         {
-            TechnicalManagerDTO retour = new TechnicalManagerDTO();
+            List<ProductOwnerDTO> retour = new List<ProductOwnerDTO>();
+            retour = _logic.List();
+            return retour;
+        }
+
+        [HttpGet("{id}")]
+        public ProductOwnerDTO GetById(int id)
+        {
+            ProductOwnerDTO retour = new ProductOwnerDTO();
             retour = _logic.GetById(id);
             return retour;
         }
 
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public ActionResult<TechnicalManagerDTO> Post([FromBody] TechnicalManagerDTO objet)
+
+        public ActionResult<ProductOwnerDTO> Post([FromBody] ProductOwnerDTO objet)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    TechnicalManagerDTO resultat = _logic.Create(objet);
-                    return resultat;
-                }
-                catch 
-                {
-                    return null;
-                }
-            }
-            else 
-            {
-                return BadRequest("TechnicalManagerDTO invalide, Is the model Valid???");
-            }
-        }
-
-        //modification d'entité avec fourniture de l'Id obligatoire
-        [HttpPut]
-        [ProducesResponseType(StatusCodes.Status202Accepted)]
-
-        public ActionResult<TechnicalManagerDTO> Put([FromBody] TechnicalManagerDTO objet)
-        {
-            if (ModelState.IsValid && objet.Id.HasValue)
-            {
-                try
-                {
-                    TechnicalManagerDTO resultat = _logic.Update(objet);
+                    ProductOwnerDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
                 catch
@@ -80,13 +70,35 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("TechnicalManagerDTO invalide");
+                return BadRequest("BusinessManagerDTO invalide");
+            }
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        //modification d'entité avec fourniture de l'Id obligatoire
+        public ActionResult<ProductOwnerDTO> Put([FromBody] ProductOwnerDTO objet)
+        {
+            if (ModelState.IsValid && objet.Id.HasValue)
+            {
+                try
+                {
+                    ProductOwnerDTO resultat = _logic.Update(objet);
+                    return resultat;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return BadRequest("BusinessManagerDTO invalide");
             }
         }
 
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-
         public ActionResult<bool> Delete(int? Id)
         {
             if (Id.HasValue)
@@ -108,3 +120,4 @@ namespace TheMapToScrum.Back.Controllers
         }
     }
 }
+

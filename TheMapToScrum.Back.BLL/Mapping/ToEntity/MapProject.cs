@@ -12,9 +12,9 @@ namespace TheMapToScrum.Back.BLL.Mapping
             if (objet != null)
             {
                 retour.Label = objet.Label;
-                retour.BusinessManagerId = objet.BusinessManagerId;
+                retour.ProductOwnerId = objet.ProductOwnerId;
                 retour.TeamId = objet.TeamId;
-                retour.TechnicalManagerId = objet.TechnicalManagerId;
+                retour.ScrumMasterId = objet.ScrumMasterId;
                 retour.DepartmentId = objet.DepartmentId;
 
                 if (creation)

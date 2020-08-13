@@ -7,11 +7,11 @@ using TheMapToScrum.Back.DTO;
 namespace TheMapToScrum.Back.BLL.Mapping
 {
 
-    internal static class MapBusinessManagerDTO
+    internal static class MapProductOwnerDTO
     {
-        internal static BusinessManagerDTO ToDto(BusinessManager objet)
+        internal static ProductOwnerDTO ToDto(ProductOwner objet)
         {
-            BusinessManagerDTO retour = new BusinessManagerDTO();
+            ProductOwnerDTO retour = new ProductOwnerDTO();
             if (objet != null)
             {
                 retour.Id = objet.Id;
@@ -26,10 +26,10 @@ namespace TheMapToScrum.Back.BLL.Mapping
         }
 
 
-        internal static List<BusinessManagerDTO> ToDto(List<BusinessManager> liste)
+        internal static List<ProductOwnerDTO> ToDto(List<ProductOwner> liste)
         {
-            List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
-            retour = liste.Select(x => new BusinessManagerDTO()
+            List<ProductOwnerDTO> retour = new List<ProductOwnerDTO>();
+            retour = liste.Select(x => new ProductOwnerDTO()
             {
                 Id = x.Id,
                 LastName = x.LastName,

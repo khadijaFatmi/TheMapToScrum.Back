@@ -17,9 +17,9 @@ namespace TheMapToScrum.Back.Repositories.Repo
             _context = context;
         }
 
-        public UserStoryContent Create(UserStoryContent objet)
+        public UserStory Create(UserStory objet)
         {
-            _context.UserStoryContent.Add(objet);
+            _context.UserStory.Add(objet);
             _context.SaveChanges();
             return objet;
         }
@@ -30,7 +30,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
             try
             {
                 // select * from
-                UserStoryContent entite = _context.UserStoryContent.Where(x => x.Id == Id).First();
+                UserStory entite = _context.UserStory.Where(x => x.Id == Id).First();
                 entite.IsDeleted = true;
                 entite.DateModification = DateTime.UtcNow;
                 _context.Update(entite);
@@ -43,32 +43,32 @@ namespace TheMapToScrum.Back.Repositories.Repo
             return resultat;
         }
 
-        public UserStoryContent Get(int Id)
+        public UserStory Get(int Id)
         {
 
-            return _context.UserStoryContent
+            return _context.UserStory
                 .Where(x => x.Id == Id).FirstOrDefault();
         }
 
-        public List<UserStoryContent> GetAll()
+        public List<UserStory> GetAll()
         {          
-            return _context.UserStoryContent
+            return _context.UserStory
                 //.Include(p => p.Project)
                 .OrderByDescending(x => x.Label)
                 .ToList();
 
         }
 
-        public List<UserStoryContent> GetAllActive()
+        public List<UserStory> GetAllActive()
         {            
-            return _context.UserStoryContent
+            return _context.UserStory
                 .Include(p => p.Project)
                 .OrderByDescending(x => x.Label)
                 .Where(x => !x.IsDeleted)
                 .ToList();
         }
 
-        public UserStoryContent Update(UserStoryContent entity)
+        public UserStory Update(UserStory entity)
         {
             _context.Update(entity);
             _context.SaveChanges();

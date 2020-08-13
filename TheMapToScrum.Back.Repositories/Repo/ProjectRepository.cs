@@ -42,7 +42,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
                 .Include(d => d.Department)
                 .Include(t => t.Team)
                 .Include(tm => tm.TechnicalManager)
-                .Include(bm => bm.BusinessManager)
+                .Include(bm => bm.ProductOwner)
                 .OrderBy(x => x.Label)
                 .ToList();
 
@@ -54,7 +54,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
                 .Include(d => d.Department)
                 .Include(t => t.Team)
                 .Include(tm => tm.TechnicalManager)
-                .Include(bm => bm.BusinessManager)
+                .Include(bm => bm.ProductOwner)
                 .OrderBy(x => x.Label)
                 .Where(x => !x.IsDeleted)
                 .ToList();
@@ -87,7 +87,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
 
                     //Delete UserStory linked to the current project
                     //get all (list) userstories with the projectId
-                    List<UserStoryContent> uss = _context.UserStoryContent.Where(x => x.ProjectId == Id).ToList();
+                    List<UserStory> uss = _context.UserStory.Where(x => x.ProjectId == Id).ToList();
                     //for each us in project, delete the us
                     uss.ForEach(a =>
                     {

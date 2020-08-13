@@ -6,7 +6,7 @@ namespace TheMapToScrum.Back.DAL.Configurations
 
     public class UserStroryConfiguration
     {
-        public UserStroryConfiguration(EntityTypeBuilder<UserStoryContent> entity)
+        public UserStroryConfiguration(EntityTypeBuilder<UserStory> entity)
         {
             entity.HasKey("Id");
             entity.HasOne(v => v.Project)

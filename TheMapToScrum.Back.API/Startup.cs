@@ -44,11 +44,11 @@ namespace TheMapToScrum.Back.API
             services.AddScoped<IProjectLogic, ProjectLogic>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
 
-            services.AddScoped<IBusinessManagerLogic, BusinessManagerLogic>();
-            services.AddScoped<IBusinessManagerRepository, BusinessManagerRepository>();
+            services.AddScoped<IProductOwnerLogic, ProductOwnerLogic>();
+            services.AddScoped<IProductOwnerRepository, ProductOwnerRepository>();
 
-            services.AddScoped<ITechnicalManagerLogic, TechnicalManagerLogic>();
-            services.AddScoped<ITechnicalManagerRepository, TechnicalManagerRepository>();
+            services.AddScoped<IScrumMasterLogic, ScrumMasterLogic>();
+            services.AddScoped<IScrumMasterRepository, ScrumMasterRepository>();
 
             services.AddScoped<IDeveloperLogic, DeveloperLogic>();
             services.AddScoped<IDeveloperRepository, DeveloperRepository>();

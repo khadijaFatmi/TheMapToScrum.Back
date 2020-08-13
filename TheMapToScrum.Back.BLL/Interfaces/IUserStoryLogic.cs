@@ -8,13 +8,13 @@ namespace TheMapToScrum.Back.BLL.Interfaces
     {
                
 
-        List<UserStoryContentDTO> list();
-        List<UserStoryContentDTO> listActive();
+        List<UserStoryDTO> list();
+        List<UserStoryDTO> listActive();
 
-        UserStoryContentDTO Create(UserStoryContentDTO objet);
+        UserStoryDTO Create(UserStoryDTO objet);
 
-        UserStoryContentDTO Update(UserStoryContentDTO objet);
+        UserStoryDTO Update(UserStoryDTO objet);
         bool Delete(int Id);
-        UserStoryContentDTO GetById(int Id);
+        UserStoryDTO GetById(int Id);
     }
 }

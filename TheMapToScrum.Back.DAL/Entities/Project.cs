@@ -6,22 +6,22 @@ namespace TheMapToScrum.Back.DAL.Entities
     {
         public string Label { get; set; }
 
-        public int? BusinessManagerId { get; set; }
+        public int? ProductOwnerId { get; set; }
 
         public int? DepartmentId { get; set; }
-        public int? TechnicalManagerId { get; set; }
+        public int? ScrumMasterId { get; set; }
 
         public int? TeamId { get; set; }
 
-        public BusinessManager BusinessManager { get; set; }
+        public ProductOwner ProductOwner { get; set; }
 
 
         public Department Department { get; set; }
-        public TechnicalManager TechnicalManager { get; set; }
+        public ScrumMaster TechnicalManager { get; set; }
 
         
 
         public Team Team { get; set; }
-        public List<UserStoryContent> UserStories { get; set; }
+        public List<UserStory> UserStories { get; set; }
     }
 }

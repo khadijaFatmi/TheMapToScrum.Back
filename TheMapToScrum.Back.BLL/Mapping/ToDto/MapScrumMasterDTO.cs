@@ -6,12 +6,12 @@ using TheMapToScrum.Back.DTO;
 
 namespace TheMapToScrum.Back.BLL.Mapping
 {
-    internal static class MapTechnicalManagerDTO
+    internal static class MapScrumMasterDTO
     {
 
-        internal static TechnicalManagerDTO ToDto(TechnicalManager objet)
+        internal static ScrumMasterDTO ToDto(ScrumMaster objet)
         {
-            TechnicalManagerDTO retour = new TechnicalManagerDTO();
+            ScrumMasterDTO retour = new ScrumMasterDTO();
             if (objet != null)
             {
                 retour.Id = objet.Id;
@@ -26,10 +26,10 @@ namespace TheMapToScrum.Back.BLL.Mapping
         }
 
 
-        internal static List<TechnicalManagerDTO> ToDto(List<TechnicalManager> liste)
+        internal static List<ScrumMasterDTO> ToDto(List<ScrumMaster> liste)
         {
-            List<TechnicalManagerDTO> retour = new List<TechnicalManagerDTO>();
-            retour = liste.Select(x => new TechnicalManagerDTO()
+            List<ScrumMasterDTO> retour = new List<ScrumMasterDTO>();
+            retour = liste.Select(x => new ScrumMasterDTO()
             {
 
                 Id = x.Id,
