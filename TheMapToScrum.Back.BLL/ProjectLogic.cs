@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using TheMapToScrum.Back.DTO;
+﻿using System.Collections.Generic;
 using TheMapToScrum.Back.BLL.Interfaces;
 using TheMapToScrum.Back.BLL.Mapping;
 using TheMapToScrum.Back.DAL.Entities;
+using TheMapToScrum.Back.DTO;
 using TheMapToScrum.Back.Repositories.Contract;
 
 namespace TheMapToScrum.Back.BLL
@@ -36,22 +35,6 @@ namespace TheMapToScrum.Back.BLL
 
         }
 
-        public ProjectDTO Update(ProjectDTO objet)
-        {
-            Project entity = MapProject.ToEntity(objet, false);
-            Project resultat = _repo.Update(entity);
-            ProjectDTO retour = MapProjectDTO.ToDto(resultat);
-            return retour;
-        }
-
-
-        public bool Delete(int Id)
-        {
-
-            bool resultat = _repo.Delete(Id);
-            return resultat;
-        }
-
         public List<ProjectDTO> List()
         {
             List<ProjectDTO> retour = new List<ProjectDTO>();
@@ -65,6 +48,24 @@ namespace TheMapToScrum.Back.BLL
             List<Project> liste = _repo.GetAllActive();
             retour = MapProjectDTO.ToDto(liste);
             return retour;
+        }
+
+        public ProjectDTO Update(ProjectDTO objet)
+        {
+            Project entity = MapProject.ToEntity(objet, false);
+            Project resultat = _repo.Update(entity);
+            ProjectDTO retour = MapProjectDTO.ToDto(resultat);
+            return retour;
+        }       
+
+        
+
+        public bool Delete(int Id)
+        {
+
+            bool resultat = _repo.Delete(Id);
+
+            return resultat;
         }
 
     }

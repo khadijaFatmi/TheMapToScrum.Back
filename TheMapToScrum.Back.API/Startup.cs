@@ -1,9 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System.IO;
+using System.Text.Json;
 
 using TheMapToScrum.Back.BLL;
 using TheMapToScrum.Back.BLL.Interfaces;
@@ -65,7 +70,16 @@ namespace TheMapToScrum.Back.API
                        .AllowAnyHeader();
             }));
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddMvc(x => x.EnableEndpointRouting = false);
+            services.AddMvc(x => x.EnableEndpointRouting = false)
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                    //options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    options.SerializerSettings.StringEscapeHandling = StringEscapeHandling.EscapeHtml;
+                    
+                }
+            );
+            
         }
 
         

@@ -23,8 +23,8 @@ namespace TheMapToScrum.Back.BLL
                 retour.TechnicalManager = MapTechnicalManagerDTO.ToDto(objet.TechnicalManager);
                 retour.BusinessManager = MapBusinessManagerDTO.ToDto(objet.BusinessManager);
                 retour.Team = MapTeamDTO.ToDto(objet.Team);                
-                retour.DateCreation = objet.DateCreation;
-                retour.DateModification = objet.DateModification;               
+                retour.DateCreation = (System.DateTime)objet.DateCreation;
+                retour.DateModification = (System.DateTime)objet.DateModification;               
                 retour.IsDeleted = objet.IsDeleted;
                
             }
@@ -47,8 +47,8 @@ namespace TheMapToScrum.Back.BLL
                 BusinessManager = MapBusinessManagerDTO.ToDto(x.BusinessManager),
                 TechnicalManager = MapTechnicalManagerDTO.ToDto(x.TechnicalManager),
                 Team = MapTeamDTO.ToDto(x.Team),
-                DateCreation = x.DateCreation,
-                DateModification = x.DateModification,
+                DateCreation = (System.DateTime)x.DateCreation,
+                DateModification = (System.DateTime)x.DateModification,
                 IsDeleted = x.IsDeleted,
                 Label = x.Label
             }).ToList();

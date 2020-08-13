@@ -14,79 +14,88 @@ namespace TheMapToScrum.Back.Controllers
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     public class BusinessManagerController : Controller
+    {
+        //injections dependances
+        private readonly IBusinessManagerLogic _logic;
+
+        public BusinessManagerController(IBusinessManagerLogic logic)
         {
-            //injections dependances
-            private readonly IBusinessManagerLogic _logic;
+            _logic = logic;
 
-            public BusinessManagerController(IBusinessManagerLogic logic)
+        }
+
+        [HttpGet]
+        [Produces(typeof(List<BusinessManagerDTO>))]
+        public List<BusinessManagerDTO> get()
+        {
+            List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
+            retour = _logic.ListActive();
+            return retour;
+        }
+
+        [HttpGet("All")]
+        [Produces(typeof(List<BusinessManagerDTO>))]
+        public List<BusinessManagerDTO> getAll()
+        {
+            List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
+            retour = _logic.List();
+            return retour;
+        }
+
+        [HttpGet("{id}")]
+        public BusinessManagerDTO GetById(int id)
+        {
+            BusinessManagerDTO retour = new BusinessManagerDTO();
+            retour = _logic.GetById(id);
+            return retour;
+        }
+
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+
+        public ActionResult<BusinessManagerDTO> Post([FromBody] BusinessManagerDTO objet)
+        {
+            if (ModelState.IsValid)
             {
-                _logic = logic;
-
-            }
-
-            [HttpGet]
-            [Produces(typeof(List<BusinessManagerDTO>))]
-            public List<BusinessManagerDTO> get()
-            {
-                List<BusinessManagerDTO> retour = new List<BusinessManagerDTO>();
-                retour = _logic.ListActive();
-                return retour;
-            }
-
-            [HttpGet("{id}")]
-            public BusinessManagerDTO GetById(int id)
-            {
-                BusinessManagerDTO retour = new BusinessManagerDTO();
-                retour = _logic.GetById(id);
-                return retour;
-            }
-
-
-            [HttpPost]
-            [ProducesResponseType(StatusCodes.Status201Created)]
-
-            public ActionResult<BusinessManagerDTO> Post([FromBody] BusinessManagerDTO objet)
-            {
-                if (ModelState.IsValid)
+                try
                 {
-                    try
-                    {
-                        BusinessManagerDTO resultat = _logic.Create(objet);
-                        return resultat;
-                    }
-                    catch
-                    {
-                     return null;
-                    }
+                    BusinessManagerDTO resultat = _logic.Create(objet);
+                    return resultat;
                 }
-                else
+                catch
                 {
-                    return BadRequest("BusinessManagerDTO invalide");
-                }
-            }
-
-            [HttpPut]
-            [ProducesResponseType(StatusCodes.Status202Accepted)]
-            //modification d'entité avec fourniture de l'Id obligatoire
-            public ActionResult<BusinessManagerDTO> Put([FromBody] BusinessManagerDTO objet)
-            {
-                if (ModelState.IsValid && objet.Id.HasValue)
-                {
-                    try
-                    {
-                        BusinessManagerDTO resultat = _logic.Update(objet);
-                        return resultat;
-                    }
-                    catch
-                    {
-                        return null;
-                    }
-                }
-                else
-                {
-                    return BadRequest("BusinessManagerDTO invalide");
+                    return null;
                 }
             }
+            else
+            {
+                return BadRequest("BusinessManagerDTO invalide");
+            }
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        //modification d'entité avec fourniture de l'Id obligatoire
+        public ActionResult<BusinessManagerDTO> Put([FromBody] BusinessManagerDTO objet)
+        {
+            if (ModelState.IsValid && objet.Id.HasValue)
+            {
+                try
+                {
+                    BusinessManagerDTO resultat = _logic.Update(objet);
+                    return resultat;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return BadRequest("BusinessManagerDTO invalide");
+            }
+        }
 
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

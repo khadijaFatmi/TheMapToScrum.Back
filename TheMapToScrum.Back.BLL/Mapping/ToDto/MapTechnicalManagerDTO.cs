@@ -19,8 +19,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
                 retour.FirstName = objet.FirstName;
                 retour.FullName = objet.FirstName + " " + objet.LastName;
                 retour.IsDeleted = objet.IsDeleted;
-                retour.DateCreation = objet.DateCreation;
-                retour.DateModification = objet.DateModification;
+                retour.DateCreation = (System.DateTime)objet.DateCreation;
+                retour.DateModification = (System.DateTime)objet.DateModification;
             }
             return retour;
         }
@@ -36,8 +36,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
                 LastName = x.LastName,
                 FullName = x.FirstName + " " + x.LastName,
                 FirstName = x.FirstName,              
-                DateCreation = x.DateCreation,
-                DateModification = x.DateModification,
+                DateCreation = (System.DateTime)x.DateCreation,
+                DateModification = (System.DateTime)x.DateModification,
                 IsDeleted = x.IsDeleted
 
             })

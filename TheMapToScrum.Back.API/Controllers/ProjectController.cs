@@ -31,11 +31,27 @@ namespace TheMapToScrum.Back.Controllers
             return retour;
         }
 
+        [HttpGet("All")]
+        [Produces(typeof(List<ProjectDTO>))]
+        public List<ProjectDTO> getAll()
+        {
+            List<ProjectDTO> retour = new List<ProjectDTO>();
+            retour = _logic.List();
+            return retour;
+        }
+
         [HttpGet("{id}")]
-        public ProjectDTO GetById(int id)
+        public ActionResult<ProjectDTO> GetById(int id)
         {
             ProjectDTO retour = new ProjectDTO();
-            retour = _logic.GetById(id);
+            if(id != 0) 
+            { 
+                retour = _logic.GetById(id);
+            }
+            else
+            {
+                return BadRequest("Project id invalide");
+            }
             return retour;
         }
 

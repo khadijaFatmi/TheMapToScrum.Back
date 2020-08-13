@@ -62,9 +62,9 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<UserStoryContent> GetAllActive()
         {            
             return _context.UserStoryContent
-                //.Include(p => p.Project)
-                //.OrderByDescending(x => x.Label)
-                //.Where(x => !x.IsDeleted)
+                .Include(p => p.Project)
+                .OrderByDescending(x => x.Label)
+                .Where(x => !x.IsDeleted)
                 .ToList();
         }
 

@@ -25,7 +25,7 @@ namespace TheMapToScrum.Back.BLL
                 retour.StoryPoints = objet.StoryPoints;
                 retour.EpicStory = objet.EpicStory;
                 retour.IsDeleted = objet.IsDeleted;
-                retour.DateCreation = objet.DateCreation;
+                retour.DateCreation = (System.DateTime)objet.DateCreation;
                 retour.DateModification = DateTime.UtcNow;
             }
 
@@ -46,8 +46,8 @@ namespace TheMapToScrum.Back.BLL
                 Role = x.Role,
                 Project = MapProjectDTO.ToDto(x.Project),
                 Priority = x.Priority,
-                DateCreation = x.DateCreation,
-                DateModification = x.DateModification,
+                DateCreation = (System.DateTime)x.DateCreation,
+                DateModification = (System.DateTime)x.DateModification,
                 EpicStory = x.EpicStory,
                 StoryPoints = x.StoryPoints,
                 Function1 = x.Function1,

@@ -44,7 +44,7 @@ namespace TheMapToScrum.Back.Controllers
         //modification d'entité avec fourniture de l'Id obligatoire
         public ActionResult<TeamDTO> Post([FromBody] TeamDTO objet)
         {
-            if (ModelState.IsValid && objet.Id.HasValue)
+            if (ModelState.IsValid)
             {
                 try
                 {
