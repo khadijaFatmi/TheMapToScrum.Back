@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TheMapToScrum.Back.BLL.Mapping;
+using TheMapToScrum.Back.Common.Enums;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
@@ -22,7 +23,9 @@ namespace TheMapToScrum.Back.BLL
                 retour.Department = MapDepartmentDTO.ToDto(objet.Department);
                 retour.ScrumMaster= MapScrumMasterDTO.ToDto(objet.TechnicalManager);
                 retour.ProductOwner = MapProductOwnerDTO.ToDto(objet.ProductOwner);
-                retour.Team = MapTeamDTO.ToDto(objet.Team);                
+                retour.Team = MapTeamDTO.ToDto(objet.Team);
+                retour.ProjectStatus = objet.ProjectStatus;
+                retour.strProjectStatus = ProcessStatus(objet.ProjectStatus);
                 retour.DateCreation = (System.DateTime)objet.DateCreation;
                 retour.DateModification = (System.DateTime)objet.DateModification;               
                 retour.IsDeleted = objet.IsDeleted;
@@ -47,12 +50,23 @@ namespace TheMapToScrum.Back.BLL
                 ProductOwner = MapProductOwnerDTO.ToDto(x.ProductOwner),
                 ScrumMaster = MapScrumMasterDTO.ToDto(x.TechnicalManager),
                 Team = MapTeamDTO.ToDto(x.Team),
+                ProjectStatus = x.ProjectStatus,
+                strProjectStatus = ProcessStatus(x.ProjectStatus),
                 DateCreation = (System.DateTime)x.DateCreation,
                 DateModification = (System.DateTime)x.DateModification,
                 IsDeleted = x.IsDeleted,
                 Label = x.Label
             }).ToList();
             return retour;
+        }
+
+
+        private static string ProcessStatus(int idStatus)
+        {
+            // conversion, par réflexion, des id de status en string, ici pour l'entité Project
+            string resultat = ((eProjectStatus)idStatus).ToString();
+
+            return resultat;
         }
     }
 }

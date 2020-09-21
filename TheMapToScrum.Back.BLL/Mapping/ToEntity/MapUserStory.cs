@@ -22,6 +22,7 @@ namespace TheMapToScrum.Back.BLL.Mapping
                 retour.Priority = objet.Priority;
                 retour.StoryPoints = objet.StoryPoints;
                 retour.EpicStory = objet.EpicStory;
+                retour.usStatus = objet.usStatus;
                 if (creation)
                 {
                     retour.IsDeleted = false;

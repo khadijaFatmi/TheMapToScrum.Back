@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TheMapToScrum.Back.Common.Enums;
 using TheMapToScrum.Back.DAL.Entities;
 using TheMapToScrum.Back.DTO;
 
@@ -8,6 +9,8 @@ namespace TheMapToScrum.Back.BLL
 {
     internal static class MapUserStoryContentDTO
     {
+
+
         internal static UserStoryDTO ToDto(UserStory objet)
         {
             UserStoryDTO retour = new UserStoryDTO();
@@ -24,6 +27,8 @@ namespace TheMapToScrum.Back.BLL
                 retour.Priority = objet.Priority;
                 retour.StoryPoints = objet.StoryPoints;
                 retour.EpicStory = objet.EpicStory;
+                retour.usStatus = objet.usStatus;
+                retour.strUsStatus = ProcessStatus(objet.usStatus);
                 retour.IsDeleted = objet.IsDeleted;
                 retour.DateCreation = (System.DateTime)objet.DateCreation;
                 retour.DateModification = DateTime.UtcNow;
@@ -49,21 +54,26 @@ namespace TheMapToScrum.Back.BLL
                 DateCreation = (System.DateTime)x.DateCreation,
                 DateModification = (System.DateTime)x.DateModification,
                 EpicStory = x.EpicStory,
+                usStatus = x.usStatus,
+                strUsStatus = ProcessStatus(x.usStatus),
                 StoryPoints = x.StoryPoints,
                 Function1 = x.Function1,
                 Function2 = x.Function2,
                 Notes = x.Notes,
                 IsDeleted = x.IsDeleted,
-                ProjectId = x.ProjectId
-
-                
-
-
-
+                ProjectId = x.ProjectId,
                 //proprietes dto
 
             }).ToList();
             return retour;
+        }
+
+        private static string ProcessStatus(int idStatus) 
+        {
+            // conversion, par réflexion, des id de status en string, ici pour l'entité UserStory
+            string resultat = ((eUsStatus)idStatus).ToString();
+            
+            return resultat;
         }
     }
 }

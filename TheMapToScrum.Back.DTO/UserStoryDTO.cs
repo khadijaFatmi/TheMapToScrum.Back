@@ -22,6 +22,10 @@ namespace TheMapToScrum.Back.DTO
         [Required]
         public bool EpicStory { get; set; }
 
+        [Required]
+        public int usStatus { get; set; }
+
+        public string strUsStatus { get; set; }
         public ProjectDTO Project { get; set; }
 
     }

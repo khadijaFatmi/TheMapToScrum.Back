@@ -13,7 +13,7 @@
         public string Priority { get; set; }
         public int StoryPoints { get; set; }
         public bool EpicStory { get; set; }
-
+        public int usStatus { get; set; }
         public Project Project { get; set; }
     }
 }

@@ -13,6 +13,8 @@
         public ScrumMasterDTO ScrumMaster { get; set; }
         public ProductOwnerDTO ProductOwner { get; set; }
         public TeamDTO Team { get; set; }
-        
+
+        public int ProjectStatus { get; set; }
+        public string strProjectStatus { get; set; }
     }
 }

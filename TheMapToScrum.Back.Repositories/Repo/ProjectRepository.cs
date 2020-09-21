@@ -38,19 +38,20 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<Project> GetAll()
         {
 
-            return _context.Project
+            List<Project> retour = _context.Project
                 .Include(d => d.Department)
                 .Include(t => t.Team)
                 .Include(tm => tm.TechnicalManager)
                 .Include(bm => bm.ProductOwner)
                 .OrderBy(x => x.Label)
                 .ToList();
+            return retour;
 
         }
 
         public List<Project> GetAllActive()
         {
-            return _context.Project
+            List<Project> retour = _context.Project
                 .Include(d => d.Department)
                 .Include(t => t.Team)
                 .Include(tm => tm.TechnicalManager)
@@ -58,6 +59,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
                 .OrderBy(x => x.Label)
                 .Where(x => !x.IsDeleted)
                 .ToList();
+             return retour;
         }
 
         public Project Update(Project entity)
