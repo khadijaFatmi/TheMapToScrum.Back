@@ -21,21 +21,38 @@ namespace TheMapToScrum.Back.Controllers
             _logic = logic;
         }
 
+
+        // Statuscode 500 = erreur serveur
+        // les exceptions seront loggees
         [HttpGet]
         [Produces(typeof(List<TeamDTO>))]
-        public List<TeamDTO> Get() 
+        public ActionResult<List<TeamDTO>> Get() 
         {
-            List<TeamDTO> retour = new List<TeamDTO>();
-            retour = _logic.ListActive();
-            return retour;
+            try
+            {
+                List<TeamDTO> retour = new List<TeamDTO>();
+                retour = _logic.ListActive();
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet("{id}")]
-        public TeamDTO GetById(int id)
+        public ActionResult<TeamDTO> GetById(int id)
         {
-            TeamDTO retour = new TeamDTO();
-            retour = _logic.GetById(id);
-            return retour;
+            try
+            {
+                TeamDTO retour = new TeamDTO();
+                retour = _logic.GetById(id);
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
 
@@ -51,14 +68,14 @@ namespace TheMapToScrum.Back.Controllers
                     TeamDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("TeamDTO invalide");
+                return BadRequest("Invalid TeamDTO Model: failed to DELETE");
             }
         }
 
@@ -76,12 +93,12 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("TeamDTO invalide");
+                return BadRequest("Invalid TeamDTO Model: failed to PUT");
             }
         }
 
@@ -99,12 +116,12 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("id invalide");
+                return BadRequest("Invalid TeamDTO Id: failed to DELETE");
             }
         }
     }

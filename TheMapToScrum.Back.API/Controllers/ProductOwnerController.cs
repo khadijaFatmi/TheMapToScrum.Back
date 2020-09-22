@@ -24,30 +24,53 @@ namespace TheMapToScrum.Back.Controllers
 
         }
 
+        // Statuscode 500 = erreur serveur
+        // les exceptions seront loggees
         [HttpGet]
         [Produces(typeof(List<ProductOwnerDTO>))]
-        public List<ProductOwnerDTO> get()
+        public ActionResult<List<ProductOwnerDTO>> get()
         {
-            List<ProductOwnerDTO> retour = new List<ProductOwnerDTO>();
-            retour = _logic.ListActive();
-            return retour;
+            try
+            {
+                List<ProductOwnerDTO> retour = new List<ProductOwnerDTO>();
+                retour = _logic.ListActive();
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet("All")]
         [Produces(typeof(List<ProductOwnerDTO>))]
-        public List<ProductOwnerDTO> getAll()
+        public ActionResult<List<ProductOwnerDTO>> getAll()
         {
-            List<ProductOwnerDTO> retour = new List<ProductOwnerDTO>();
-            retour = _logic.List();
-            return retour;
+            try
+            {
+                List<ProductOwnerDTO> retour = new List<ProductOwnerDTO>();
+                retour = _logic.List();
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet("{id}")]
-        public ProductOwnerDTO GetById(int id)
+        public ActionResult<ProductOwnerDTO> GetById(int id)
         {
-            ProductOwnerDTO retour = new ProductOwnerDTO();
-            retour = _logic.GetById(id);
-            return retour;
+            try
+            {
+                ProductOwnerDTO retour = new ProductOwnerDTO();
+                retour = _logic.GetById(id);
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
 
@@ -63,14 +86,14 @@ namespace TheMapToScrum.Back.Controllers
                     ProductOwnerDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("BusinessManagerDTO invalide");
+                return BadRequest("Invalid ProductOwnerDTO ModelState: failed to POST");
             }
         }
 
@@ -86,14 +109,14 @@ namespace TheMapToScrum.Back.Controllers
                     ProductOwnerDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("BusinessManagerDTO invalide");
+                return BadRequest("Invalid ProductOwnerDTO ModelState: failed to PUT");
             }
         }
 
@@ -110,12 +133,12 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("id invalide");
+                return BadRequest("Invalid ProductOwnerDTO ModelState: failed to DELETE");
             }
         }
     }

@@ -22,23 +22,39 @@ namespace TheMapToScrum.Back.Controllers
             _logic = logic;
         }
 
+        // Statuscode 500 = erreur serveur
+        // les exceptions seront loggees
         [HttpGet("{id}")]
-        public UserStoryDTO GetById(int id)
+        public ActionResult<UserStoryDTO> GetById(int id)
         {
-            UserStoryDTO retour = new UserStoryDTO();
-            retour = _logic.GetById(id);
-            return retour;
+            try
+            {
+                UserStoryDTO retour = new UserStoryDTO();
+                retour = _logic.GetById(id);
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet]
         [Produces(typeof(UserStoryDTO))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public List<UserStoryDTO> Get()
+        public ActionResult<List<UserStoryDTO>> Get()
         {
-            List<UserStoryDTO> retour = new List<UserStoryDTO>();
-            retour = _logic.listActive();
-            return retour;
+            try
+            {
+                List<UserStoryDTO> retour = new List<UserStoryDTO>();
+                retour = _logic.listActive();
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpPost]
@@ -52,14 +68,14 @@ namespace TheMapToScrum.Back.Controllers
                     UserStoryDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
-                catch 
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("UserStoryDTO invalide");
+                return BadRequest("Invalid UserStoryDTO Model: failed to POST ");
             }
         }
 
@@ -77,12 +93,12 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 catch(Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("UserStoryDTO invalide");
+                return BadRequest("Invalid UserStoryDTO Model & Id Value: failed to PUT");
             }
         }
 
@@ -100,12 +116,12 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("id invalide");
+                return BadRequest("Invalid UserStoryDTO Id Value: failed to DELETE");
             }
         }
 

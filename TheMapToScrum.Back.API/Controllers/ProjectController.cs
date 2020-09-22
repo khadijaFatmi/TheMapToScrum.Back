@@ -22,37 +22,59 @@ namespace TheMapToScrum.Back.Controllers
             _logic = logic;
         }
 
+        // Statuscode 500 = erreur serveur
+        // les exceptions seront loggees
         [HttpGet]
         [Produces(typeof(List<ProjectDTO>))]
-        public List<ProjectDTO> get()
+        public ActionResult<List<ProjectDTO>> get()
         {
-            List<ProjectDTO> retour = new List<ProjectDTO>();
-            retour = _logic.ListActive();
-            return retour;
+            try
+            {
+                List<ProjectDTO> retour = new List<ProjectDTO>();
+                retour = _logic.ListActive();
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet("All")]
         [Produces(typeof(List<ProjectDTO>))]
-        public List<ProjectDTO> getAll()
+        public ActionResult<List<ProjectDTO>> getAll()
         {
-            List<ProjectDTO> retour = new List<ProjectDTO>();
-            retour = _logic.List();
-            return retour;
+            try
+            {
+                List<ProjectDTO> retour = new List<ProjectDTO>();
+                retour = _logic.List();
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet("{id}")]
         public ActionResult<ProjectDTO> GetById(int id)
         {
+
             ProjectDTO retour = new ProjectDTO();
-            if(id != 0) 
-            { 
+            try
+            {                
                 retour = _logic.GetById(id);
+               
+                if (retour.Id == null)
+                {
+                    return BadRequest("Invalid ProjectDTO ModelState: fail to GETbyId");
+                }
+                return retour;
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest("Project id invalide");
+                return StatusCode(500, ex);
             }
-            return retour;
         }
 
         [HttpPost]
@@ -73,7 +95,7 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("ProjectDTO invalide");
+                return BadRequest("Invalid ProjectDTO ModelState: fail to POST");
             }
         }
 
@@ -97,7 +119,7 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("ProjectDTO invalide");
+                return BadRequest("Invalid ProjectDTO ModelState: fail to PUT");
             }
         }
 
@@ -120,7 +142,7 @@ namespace TheMapToScrum.Back.Controllers
             }
             else
             {
-                return BadRequest("id invalide");
+                return BadRequest("Invalid ProjectDTO Id: fail to DELETE");
             }
         }
     }

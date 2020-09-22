@@ -21,21 +21,38 @@ namespace TheMapToScrum.Back.Controllers
             _logic = logic;
         }
 
+
+        // Statuscode 500 = erreur serveur
+        // les exceptions seront loggees
         [HttpGet]
         [Produces(typeof(List<ScrumMasterDTO>))]
-        public List<ScrumMasterDTO> Get()
+        public ActionResult<List<ScrumMasterDTO>> Get()
         {
-            List<ScrumMasterDTO> retour = new List<ScrumMasterDTO>();
-            retour = _logic.ListActive();
-            return retour;
+            try
+            {
+                List<ScrumMasterDTO> retour = new List<ScrumMasterDTO>();
+                retour = _logic.ListActive();
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet("{id}")]
-        public ScrumMasterDTO GetById(int id)
+        public ActionResult<ScrumMasterDTO> GetById(int id)
         {
-            ScrumMasterDTO retour = new ScrumMasterDTO();
-            retour = _logic.GetById(id);
-            return retour;
+            try
+            {
+                ScrumMasterDTO retour = new ScrumMasterDTO();
+                retour = _logic.GetById(id);
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpPost]
@@ -49,14 +66,14 @@ namespace TheMapToScrum.Back.Controllers
                     ScrumMasterDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
-                catch 
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else 
             {
-                return BadRequest("TechnicalManagerDTO invalide, Is the model Valid???");
+                return BadRequest("Invalid ScrumMasterDTO ModelState: failed to POST");
             }
         }
 
@@ -73,14 +90,14 @@ namespace TheMapToScrum.Back.Controllers
                     ScrumMasterDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("TechnicalManagerDTO invalide");
+                return BadRequest("Invalid ScrumMasterDTO ModelState: failed to PUT");
             }
         }
 
@@ -98,12 +115,12 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("id invalide");
+                return BadRequest("Invalid ScrumMasterDTO ModelState: failed to DELETE");
             }
         }
     }

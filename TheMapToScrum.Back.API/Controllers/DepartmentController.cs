@@ -21,25 +21,46 @@ namespace TheMapToScrum.Back.Controllers
             _logic = logic;
         }
 
-        
 
+        // Statuscode 500 = erreur serveur
+        // les exceptions seront loggees
         [HttpGet]
         [Produces(typeof(DepartmentDTO))]
-        public List<DepartmentDTO> Get()
+        public ActionResult<List<DepartmentDTO>> Get()
         {
             List<DepartmentDTO> retour = new List<DepartmentDTO>();
-            retour = _logic.ListActive();
-            return retour;
+            try 
+            {
+                retour = _logic.ListActive();
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            
+            }
         }
 
 
 
         [HttpGet("{id}")]
-        public DepartmentDTO GetById(int id)
+        public ActionResult<DepartmentDTO> GetById(int id)
         {
-            DepartmentDTO retour = new DepartmentDTO();
-            retour = _logic.GetById(id);
-            return retour;
+            try
+            {
+                DepartmentDTO retour = new DepartmentDTO();
+
+                retour = _logic.GetById(id);
+                if(retour == null) 
+                {
+                    return StatusCode(404, "object not found");
+                }
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpPost]
@@ -54,14 +75,14 @@ namespace TheMapToScrum.Back.Controllers
                     DepartmentDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("UserStoryDTO invalide");
+                return BadRequest("Invalid DepartmentDTO ModelState: failed to POST ");
             }
         }
 
@@ -78,14 +99,14 @@ namespace TheMapToScrum.Back.Controllers
                     DepartmentDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("DepartmentDTO invalide");
+                return BadRequest("Invalid DepartmentDTO ModelState: failed to PUT");
             }
         }
 
@@ -102,12 +123,12 @@ namespace TheMapToScrum.Back.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex); 
                 }
             }
             else
             {
-                return BadRequest("id invalide");
+                return BadRequest("Invalid DepartmentDTO ModelState: failed to DELETE");
             }
         }
 

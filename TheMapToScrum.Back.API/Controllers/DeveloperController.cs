@@ -23,22 +23,38 @@ namespace UserStoryWebAPI2.Controllers
         }
 
 
+        // Statuscode 500 = erreur serveur
+        // les exceptions seront loggees
         [HttpGet]
         [Produces(typeof(List<DeveloperDTO>))]
-        public List<DeveloperDTO> get()
+        public ActionResult<List<DeveloperDTO>> get()
         {
-            List<DeveloperDTO> retour = new List<DeveloperDTO>();
-            retour = _logic.ListActive();
-            return retour;
+            try
+            {
+                List<DeveloperDTO> retour = new List<DeveloperDTO>();
+                retour = _logic.ListActive();
+                return retour;
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
 
         [HttpGet("{id}")]
-        public DeveloperDTO GetById(int id)
+        public ActionResult<DeveloperDTO> GetById(int id)
         {
-            DeveloperDTO retour = new DeveloperDTO();
-            retour = _logic.GetById(id);
-            return retour;
+            try
+            {
+                DeveloperDTO retour = new DeveloperDTO();
+                retour = _logic.GetById(id);
+                return retour;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpPost]
@@ -53,14 +69,14 @@ namespace UserStoryWebAPI2.Controllers
                     DeveloperDTO resultat = _logic.Create(objet);
                     return resultat;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("DeveloperDTO invalide");
+                return BadRequest("Invalid DeveloperDTO ModelState: failed to POST");
             }
         }
 
@@ -76,14 +92,14 @@ namespace UserStoryWebAPI2.Controllers
                     DeveloperDTO resultat = _logic.Update(objet);
                     return resultat;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("DeveloperDTO invalide");
+                return BadRequest("Invalid DeveloperDTO ModelState: failed to PUT");
             }
         }
 
@@ -100,12 +116,12 @@ namespace UserStoryWebAPI2.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return StatusCode(500, ex);
                 }
             }
             else
             {
-                return BadRequest("id invalide");
+                return BadRequest("Invalid DeveloperDTO ModelState: failed to DELETE");
             }
         }
 
