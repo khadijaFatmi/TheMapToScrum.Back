@@ -18,6 +18,8 @@ namespace TheMapToScrum.Back.DAL
         public virtual DbSet<UserStory> UserStory { get; set; }
         public virtual DbSet<Project> Project { get; set; }
 
+        public virtual DbSet<Taask> Taask { get; set; }
+
         public virtual DbSet<ProductOwner> ProductOwner { get; set; }
 
         public virtual DbSet<ScrumMaster> ScrumMaster { get; set; }
@@ -31,6 +33,7 @@ namespace TheMapToScrum.Back.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new UserStroryConfiguration(modelBuilder.Entity<UserStory>());
+            new TaaskConfiguration(modelBuilder.Entity<Taask>());
             new ProjectConfiguration(modelBuilder.Entity<Project>());
             new ProductOwnerConfiguration(modelBuilder.Entity<ProductOwner>());
             new ScrumMasterConfiguration(modelBuilder.Entity<ScrumMaster>());

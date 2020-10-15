@@ -16,17 +16,20 @@ namespace TheMapToScrum.Back.DTO
         public string Function1 { get; set; }
         public string Function2 { get; set; }
         public string Notes { get; set; }
-        public string Priority { get; set; }
-        [Required]
-        public int StoryPoints { get; set; }
-        [Required]
-        public bool EpicStory { get; set; }
+    
+    public int? Priority { get; set; }
+        public string strPriority { get; set; }
+        
+        public int? StoryPoints { get; set; }
+
+        public bool? EpicStory { get; set; }
 
         [Required]
         public int usStatus { get; set; }
 
         public string strUsStatus { get; set; }
         public ProjectDTO Project { get; set; }
+        public int? nbTasks { get; set; }
 
     }
 }

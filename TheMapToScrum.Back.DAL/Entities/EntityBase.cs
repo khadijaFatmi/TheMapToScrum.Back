@@ -7,7 +7,7 @@ namespace TheMapToScrum.Back.DAL.Entities
         public int? Id { get; set; }
         
         //suppression logique
-        public bool IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
 
         public DateTime? DateModification { get; set; }
 

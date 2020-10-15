@@ -6,7 +6,12 @@ namespace TheMapToScrum.Back.BLL.Mapping
 {
     internal static class MapUserStory
     {
-
+        /// <summary>
+        /// DTO to Entity(db) with Creation Arg if false, it's an update
+        /// </summary>
+        /// <param name="objet"></param>
+        /// <param name="creation"></param>
+        /// <returns>Entity</returns>
         internal static UserStory ToEntity(UserStoryDTO objet, bool creation)
         {
             UserStory retour = new UserStory();

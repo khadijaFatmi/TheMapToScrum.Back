@@ -42,7 +42,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         {
             return _context.ScrumMaster
                 .OrderByDescending(x => x.FirstName)
-                .Where(x => !x.IsDeleted)
+                .Where(x => (bool)!x.IsDeleted)
                 .ToList();
         }
 

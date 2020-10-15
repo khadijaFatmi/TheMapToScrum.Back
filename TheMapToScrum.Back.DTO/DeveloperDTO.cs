@@ -1,9 +1,11 @@
 ﻿namespace TheMapToScrum.Back.DTO
 {
-    public class DeveloperDTO : BaseEntityDTO
-    {
-        public string LastName { get; set; }
+  public class DeveloperDTO : BaseEntityDTO
+  {
+    public string LastName { get; set; }
 
-        public string FirstName { get; set; }
-    }
+    public string FirstName { get; set; }
+
+    public string fullName { get; set; }
+  }
 }

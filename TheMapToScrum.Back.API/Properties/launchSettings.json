@@ -19,7 +19,6 @@
     },
     "TheMapToScrum.Back.API": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "api/project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

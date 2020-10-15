@@ -1,4 +1,6 @@
-﻿namespace TheMapToScrum.Back.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TheMapToScrum.Back.DAL.Entities
 {
     public class UserStory : EntityBase
     {
@@ -10,10 +12,11 @@
         public string Function1 { get; set; }
         public string Function2 { get; set; }
         public string Notes { get; set; }
-        public string Priority { get; set; }
-        public int StoryPoints { get; set; }
-        public bool EpicStory { get; set; }
+        public int? Priority { get; set; }
+        public int? StoryPoints { get; set; }
+        public bool? EpicStory { get; set; }
         public int usStatus { get; set; }
         public Project Project { get; set; }
+        public int? nbTasks { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace TheMapToScrum.Back.BLL
                 retour.ScrumMasterId = objet.ScrumMasterId;
                 retour.DepartmentId = objet.DepartmentId;
                 retour.Department = MapDepartmentDTO.ToDto(objet.Department);
-                retour.ScrumMaster= MapScrumMasterDTO.ToDto(objet.TechnicalManager);
+                retour.ScrumMaster= MapScrumMasterDTO.ToDto(objet.ScrumMaster);
                 retour.ProductOwner = MapProductOwnerDTO.ToDto(objet.ProductOwner);
                 retour.Team = MapTeamDTO.ToDto(objet.Team);
                 retour.ProjectStatus = objet.ProjectStatus;
@@ -48,7 +48,7 @@ namespace TheMapToScrum.Back.BLL
                 ScrumMasterId = x.ScrumMasterId,
                 Department = MapDepartmentDTO.ToDto(x.Department),
                 ProductOwner = MapProductOwnerDTO.ToDto(x.ProductOwner),
-                ScrumMaster = MapScrumMasterDTO.ToDto(x.TechnicalManager),
+                ScrumMaster = MapScrumMasterDTO.ToDto(x.ScrumMaster),
                 Team = MapTeamDTO.ToDto(x.Team),
                 ProjectStatus = x.ProjectStatus,
                 strProjectStatus = ProcessStatus(x.ProjectStatus),

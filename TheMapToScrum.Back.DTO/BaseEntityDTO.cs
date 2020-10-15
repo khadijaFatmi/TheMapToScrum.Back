@@ -8,10 +8,10 @@ namespace TheMapToScrum.Back.DTO
 
              
         //suppression logique ;-)
-        public bool IsDeleted { get; set; }
-        public DateTime DateCreation { get; set; }
+        public bool? IsDeleted { get; set; }
+        public DateTime? DateCreation { get; set; }
 
 
-        public DateTime DateModification { get; set; }
+        public DateTime? DateModification { get; set; }
     }
 }

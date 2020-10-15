@@ -39,7 +39,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
         public List<Developer> GetAllActive()
         {
             return _context.Developer
-                .Where(x => !x.IsDeleted)
+                .Where(x => (bool)!x.IsDeleted)
                 .ToList();
         }
 

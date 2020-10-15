@@ -41,7 +41,7 @@ namespace TheMapToScrum.Back.Repositories.Repo
             List<Project> retour = _context.Project
                 .Include(d => d.Department)
                 .Include(t => t.Team)
-                .Include(tm => tm.TechnicalManager)
+                .Include(tm => tm.ScrumMaster)
                 .Include(bm => bm.ProductOwner)
                 .OrderBy(x => x.Label)
                 .ToList();
@@ -54,10 +54,10 @@ namespace TheMapToScrum.Back.Repositories.Repo
             List<Project> retour = _context.Project
                 .Include(d => d.Department)
                 .Include(t => t.Team)
-                .Include(tm => tm.TechnicalManager)
+                .Include(tm => tm.ScrumMaster)
                 .Include(bm => bm.ProductOwner)
                 .OrderBy(x => x.Label)
-                .Where(x => !x.IsDeleted)
+                .Where(x => (bool)!x.IsDeleted)
                 .ToList();
              return retour;
         }

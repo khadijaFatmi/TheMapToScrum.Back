@@ -17,7 +17,7 @@ namespace TheMapToScrum.Back.DAL.Entities
 
 
         public Department Department { get; set; }
-        public ScrumMaster TechnicalManager { get; set; }
+        public ScrumMaster ScrumMaster { get; set; }
 
         public int ProjectStatus { get; set; }
 

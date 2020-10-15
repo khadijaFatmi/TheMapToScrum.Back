@@ -16,5 +16,6 @@ namespace TheMapToScrum.Back.BLL.Interfaces
         UserStoryDTO Update(UserStoryDTO objet);
         bool Delete(int Id);
         UserStoryDTO GetById(int Id);
-    }
+        List<UserStoryDTO> getByProjectId(int id);
+  }
 }

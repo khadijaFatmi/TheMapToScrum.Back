@@ -3,18 +3,20 @@ using TheMapToScrum.Back.DAL.Entities;
 
 namespace TheMapToScrum.Back.Repositories.Contract
 {
-    public interface IUserStoryRepository
-    {
-        UserStory Get(int Id);
+  public interface IUserStoryRepository
+  {
+    UserStory Get(int Id);
+    List<UserStory> getByProjectId(int id);
 
-        List<UserStory> GetAll();
+    List<UserStory> GetAll();
 
-        List<UserStory> GetAllActive();
+    List<UserStory> GetAllActive();
 
-        UserStory Create(UserStory objet);
+    UserStory Create(UserStory objet);
 
-        UserStory Update(UserStory objet);
+    UserStory Update(UserStory objet);
 
-        bool Delete(int Id);
-    }
+    bool Delete(int Id);
+
+  }
 }
