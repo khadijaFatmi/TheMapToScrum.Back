@@ -32,8 +32,8 @@ namespace TheMapToScrum.Back.BLL.Mapping
                 {
                     retour.IsDeleted = false;
                     retour.DateCreation = DateTime.UtcNow;
-                    retour.DateModification = objet.DateCreation;
-                }
+                    retour.DateModification = DateTime.UtcNow;
+        }
                 else
                 {
                     retour.Id = objet.Id;

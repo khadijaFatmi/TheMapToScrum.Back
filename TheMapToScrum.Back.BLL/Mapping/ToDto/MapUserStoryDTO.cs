@@ -25,7 +25,7 @@ namespace TheMapToScrum.Back.BLL
         retour.Function2 = objet.Function2;
         retour.Notes = objet.Notes;
         retour.Priority = objet.Priority;
-        retour.strPriority = GetUsPriority((int)objet.Priority);
+        retour.strPriority = objet.Priority == null ? null: GetUsPriority((int)objet.Priority);
         retour.StoryPoints = objet.StoryPoints;
         retour.EpicStory = objet.EpicStory;
         retour.usStatus = objet.usStatus;
